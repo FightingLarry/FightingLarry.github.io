@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: 
+Sitemap: http://www.iamlarry.com/atom.xml

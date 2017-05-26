@@ -15,7 +15,7 @@ all_categories: [
 ["linux", "Linux相关","/posts/linux.html"],
 ["read", "读书笔记","/posts/read.html"], 
 ["other", "随手记","/posts/other.html"],
-["about", "关于{{author}}","/about.html"]
+["about", "关于Larry","/about.html"]
 ]
 
 paginate: 7
