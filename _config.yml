@@ -14,7 +14,7 @@ all_categories: [
 ["newtech", "Kotlin","/posts/newtech.html"],
 ["linux", "Linux相关","/posts/linux.html"],
 ["read", "读书笔记","/posts/read.html"], 
-["other", "随后记","/posts/other.html"],
+["other", "随手记","/posts/other.html"],
 ["about", "关于{{author}}","/about.html"]
 ]
 

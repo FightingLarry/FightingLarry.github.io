@@ -1,4 +1,4 @@
 ---
 layout: category
-category: Kotlin
+category: newtech
 ---
