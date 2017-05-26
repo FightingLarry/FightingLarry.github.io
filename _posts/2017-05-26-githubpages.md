@@ -2,7 +2,7 @@
 layout: post
 category: "read"
 title:  "GitHub Pages建立自己的博客"
-tags: [GitHub Pages,Jekyll,建站，GitHub,博客]
+tags: [GitHub Pages,Jekyll,建站,GitHub,博客]
 ---
 
 可以在[GitHub Pages主页]( https://pages.github.com "GitHub Pages主页")上找到创建步骤。
