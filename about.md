@@ -2,30 +2,79 @@
 layout: page
 title: "关于：About"
 ---
-Welcome to visit my blog!
+## Fighting Larry-个人简历
 
-About
+### 联系方式
+
+- QQ：511573633
+- Emil：511573633@qq.com
+
+### 个人信息
+
+- 信息：Larry/男/1989
+- 学历：本科/天津科技大学
+- 工作年限：6年+
+- 期望职位：Android开发工程师
+- 工作地点：深圳
+
+### 专业技能
+
+- 熟悉Android系统框架和SDK
+- 熟悉Android下网络通信机制、Socket通信
+- 熟悉当前Android各种优秀的开源框架
 
 
-#### 1.Personal Info
-Name: Xuewen Pan(潘学文)  
-Gender: Male  
-City: Wuhan, China  
-Career: Software developer(Android&Linux&Web)  
-
-#### 2.My Links
-Blog: <http://www.panxw.com>  
-GitHub: <https://github.com/panxw>  
-LinkedIn: <http://www.linkedin.com/in/panxw>  
+- 熟悉Java EE相关技术和框架(Spring/SpringMVC/MyBatis)
 
 
-#### 3.Contract
-Email: winfirm#163.com  
-QQ: 85902258  
+- 熟悉Mysql的使用和开发以及性能调优以及主从集群配置
+- 熟悉Svn/Git版本管理工具
+- 熟悉Linux系统
 
-### 4.Domain For Sale
-danbaili.com  
-fangxinyu.com  
-maicaiwa.com  
-babytoycar.com  
-youth168.com  
+### 工作经历
+
+- 北京勾正数据科技有限公司（2015年3月-2017年3月）
+
+  - 智能电视数据采集系统
+
+    参与了项目的系统架构设计，负责处理智能电视的心跳情况上报，以及用户各种OTT行为的使用情况采集，内存占用优化，网络请求处理优化、代码混淆与APK打包。
+
+  - 今日OTT(ott.gz-data.com)
+
+    公司一款面向电视台、视频网站、广告投放和精准营销领域用户群体的一款产品。通过对智能电视用户收视行为的数据挖掘分析和可视化呈现，解决传统收视调查无法解决的实时开机终端数监测、热门节目关注度、市占率、区域/频道/节目用户画像等问题。
+
+    负责项目后台接口API的开发，参与项目从产品设计到数据支持以及上线部署的工作，后台API主要使用了Spring + Spring MVC + Mybatis + Mysql框架，采用声明式事务处理，支持Restful风格，并且使用了Redis缓存、Druid数据库监控。
+
+- 北京乐宠科技有限公司 （2014年1月-2015年3月）
+
+  - 乐宠
+
+    一款集宠物社交、宠物服务、宠物商城的APP。
+
+    参与客户端框架架构（基于MVP + okhttp + picasso ）的实现，负责客户端各个功能模块的开发，按时完成多次版本迭代。以及协助测试组完成软件系统及模块的测试。(还没想好怎么写)
+
+- 北京中科软科技股份有限公司（2012年7月-2014年1月）
+
+  - 朝阳区智能城市APP
+
+    所在项目组主要负责朝阳区智能城市管理项目。项目主要是为了服务社区工作人员，使用手机客户端来完成很多监管执法工作，实现社区工作人员从手机端派发各类违法违规的案件，然后由不同执法部门处理并反馈案件的完成情况，最终再由社区管理人员结案的办公流程。
+
+    主要参与了项目组中门前三包、食品安全、安全监测项目，负责客户端的所有开发工作，还负责部分需求调研以及培训工作。此外参与了公司内部框架的开发，集成了图片处理、网络请求、数据存储、高德地图等功能以及各种自定义控件。
+
+### 个人评价
+
+- 职业Android开发者
+
+- 业余Web前端开发者
+
+- 对新的技术与产品永远保持好奇心，喜欢探研新技术
+
+- 对代码有较高的要求
+
+- 较强的独立开发能力
+
+- 较强的问题解决能力
+
+  ​
+
+  ​
