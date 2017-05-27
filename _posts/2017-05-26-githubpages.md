@@ -13,7 +13,7 @@ tags: [GitHub Pages,Jekyll,建站,GitHub,博客]
 
 1.2、自定义网址，解析*username*.github.io。
 
-[Custom dimain with GitHub Pages]( https://help.github.com/articles/using-a-custom-domain-with-github-pages "Custom dimain with GitHub Pages")
+[Custom dimain with GitHub Pages]( https://help.github.com/categories/github-pages-basics/ "Custom dimain with GitHub Pages")
 
 
 
