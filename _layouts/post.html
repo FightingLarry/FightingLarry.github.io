@@ -24,15 +24,18 @@ layout: default
 
 <!-- next and previous -->
 <div style="margin-top:15px; margin-bottom:10px">
-  
-  <span class="next">
   {%if page.previous%}
+  <span class="next">
     上篇：
     <a href="{{page.previous.url}}">
       {{page.previous.title}}
     </a>
-	{%endif%}
   </span>
+  {%else%}
+	<span class="next">
+	没有上篇了
+	</span>
+  {%endif%}
   {%if page.next%}
   <div style="float:right">
   <span class="prev" >
