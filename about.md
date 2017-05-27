@@ -6,13 +6,13 @@ title: "关于：About"
 
 ### 联系方式
 
-- QQ：511573633
-- Emil：511573633@qq.com
-- Blog：http://www.iamlarry.com
+- QQ：`511573633`
+- Emil：`511573633@qq.com`
+- 主页：[www.iamlarry.com]( http://www.iamlarry.com "I am Larry 主页")
 
 ### 个人信息
 
-- 信息：Larry/男/1989
+- 信息：`Larry` | `男` | `1989`
 - 学历：本科/天津科技大学
 - 工作年限：6年+
 - 期望职位：Android开发工程师
@@ -23,11 +23,7 @@ title: "关于：About"
 - 熟悉Android系统框架和SDK
 - 熟悉Android下网络通信机制、Socket通信
 - 熟悉当前Android各种优秀的开源框架
-
-
 - 熟悉Java EE相关技术和框架(Spring/SpringMVC/MyBatis)
-
-
 - 熟悉Mysql的使用和开发以及性能调优以及主从集群配置
 - 熟悉Svn/Git版本管理工具
 - 熟悉Linux系统
@@ -45,17 +41,10 @@ title: "关于：About"
 ### 个人评价
 
 - 职业Android开发者
-
 - 业余Web前端开发者
-
 - 对新的技术与产品永远保持好奇心，喜欢探研新技术
-
 - 对代码有较高的要求
-
 - 较强的独立开发能力
-
-- 较强的问题解决能力
-
-  ​
+- 较强的问题解决能力 ​
 
   ​
