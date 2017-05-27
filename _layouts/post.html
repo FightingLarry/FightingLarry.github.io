@@ -31,7 +31,11 @@ layout: default
       {{page.previous.title}}
     </a>
   </span>
-  {%endif%} 
+  {%else%}
+	<span class="next">
+	没有了
+	</span>
+  {%endif%}
   {%if page.next%}
   <div style="float:right">
   <span class="prev" >
