@@ -1,30 +1,50 @@
+# Site settings
+title: Larry的博客
+email: 511573633@qq.com
+description: > # this means to ignore newlines until "baseurl:"
+  Larry的博客
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: http://www.iamlarry.com # the base hostname & protocol for your site
+rss_url: /pages/feed.xml
+author: Larry
+
+# Sidebar filter
+# Choose 'tag' or 'category' as filter in sidebar.
+filter: 'category'
+recent_num: 20
+
+# Social account
+#twitter: masonsuyan
+#weibo: suyan0830
+github: FightingLarry
+#instagram: suyan0830
+#linkedin: suyan0830
+
+# avatar and Favicon
+avatar: assets/icon/avatar.png
+favicon: favicon.ico
+
+# disqus config
+disqus:
+  shortname: iamlarry
+
+# google analytics config
+ga:
+  id: UA-100236772-1
+  url: iamlarry.com
+
+# Build settings
+permalink: /:year/:month/:day/:title.html
 markdown: kramdown
 highlighter: rouge
-permalink: /posts/:title.html
-excerpt_separator: "<!-- more -->"
+mathjax: disabled
+sass:
+  style: compressed
 
-github: FightingLarry
-author: "Larry"
-email: 511573633@qq.com
-name: "Fighting Larry"
-url: http://www.iamlarry.com
-domain: www.iamlarry.com
-all_categories: [
-["android", "Android开发","/posts/android.html"], 
-["newtech", "Kotlin","/posts/newtech.html"],
-["linux", "Linux相关","/posts/linux.html"],
-["read", "读书笔记","/posts/read.html"], 
-["other", "随手记","/posts/other.html"],
-["about", "关于Larry","/about.html"]
-]
-
-paginate: 7
-paginate_path: "posts/page:num"
-timezone: America/Los_Angeles
-
-collections:
-  docs:
-    output: true
-
+# Jekyll Plugin
+# https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
 gems:
- - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
