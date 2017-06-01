@@ -62,7 +62,7 @@ Commit O
 然后git push -f origin 远程分支
 ```
 
-###还原到某个commitId
+### 还原到某个commitId
 
 ```bash
 #还原到某个commitId
@@ -222,7 +222,7 @@ Git的全局设置在`~/.gitconfig`中，单独设置在`project/.git/config`下
 
 忽略设置全局在`~/.gitignore_global`中，单独设置在`project/.gitignore`下。
 
-###.gitconfig（设置快捷键）
+### .gitconfig（设置快捷键）
 
 ```bash
 [user]
