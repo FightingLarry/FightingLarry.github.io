@@ -31,7 +31,7 @@ disqus:
 # google analytics config
 ga:
   id: UA-100236772-1
-  url: iamlarry.com
+  url: www.iamlarry.com
 
 # Build settings
 permalink: /:year/:month/:day/:title.html
