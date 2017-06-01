@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "关于：About"
+title: "Larry-个人简历"
 ---
-## Larry-个人简历
+## 英文名：Larry
 
 ### 联系方式
 
