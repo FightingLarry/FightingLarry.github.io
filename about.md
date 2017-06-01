@@ -1,8 +1,8 @@
 ---
-layout: page
+layout: post
 title: "关于：About"
 ---
-## Fighting Larry-个人简历
+## Larry-个人简历
 
 ### 联系方式
 
