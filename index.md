@@ -3,7 +3,7 @@ title: Larry
 layout: post
 ---
 
-## 关于我[传送门](http://iamlarry.com/about.html)
+## [关于我](http://iamlarry.com/about.html)
 
 从事Android工作，希望通过博客记录工作、生活上的点滴。
 
