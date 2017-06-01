@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Tags
 ---
 <svg class="cloud" style="width:95%;height:450px">
