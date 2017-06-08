@@ -9,6 +9,10 @@ tags: [Android]
 
 ## Android源码知识
 
+### [GeniusVJR/LearningNotes Android知识点](https://github.com/GeniusVJR/LearningNotes)
+
+
+
 ### [LittleFriendsGroup/AndroidSdkSourceAnalysis](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis)
 
 ![img](https://github.com/yuxingxin/AndroidWidgetClassGraph/raw/master/img/android.jpg)
