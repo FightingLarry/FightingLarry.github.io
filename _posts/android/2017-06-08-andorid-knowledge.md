@@ -6,6 +6,23 @@ tags: [Android]
 ---
 
 
+## Android源码分析
+
+- [公共技术点之View绘制流程](https://github.com/JackChan1999/Android_Source_Analysis/blob/master/common/common/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8BView%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.md)
+- [公共技术点之View事件传递](https://github.com/JackChan1999/Android_Source_Analysis/blob/master/common/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8BView%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92.md)
+- [ViewGroup 源码解析](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis/blob/master/article/ViewGroup%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
+- [公共技术点之Android动画基础](https://github.com/JackChan1999/Android_Source_Analysis/blob/master/common/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8BAndroid%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80.md)
+- [Service源码解析](https://github.com/asLody/SourceAnalysis/blob/master/Service%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
+- [Binder源码解析](https://github.com/xdtianyu/SourceAnalysis/blob/master/Binder%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
+- [Handler源码解析](https://github.com/maoruibin/HandlerAnalysis)
+- [Bundle源码解析](https://github.com/ASPOOK/BundleAnalysis)
+- [LocalBroadcastManager源码解析](https://github.com/czhzero/AndroidSdkSourceAnalysis/blob/master/article/LocalBroadcastManager%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
+- [LruCache源码解析](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis/blob/master/article/LruCache%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
+- [MediaPlayer源码解析](https://github.com/lber19535/SourceAnalysis/blob/master/Media%20Player%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
+- [SharePreferences源码解析](http://blog.csdn.net/yanbober/article/details/47866369)
+- [公共技术点之Java反射](https://github.com/JackChan1999/Android_Source_Analysis/blob/master/common/common/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8BJava%E5%8F%8D%E5%B0%84.md)
+- [公共技术点之Java注解](https://github.com/JackChan1999/Android_Source_Analysis/blob/master/common/common/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8BJava%E6%B3%A8%E8%A7%A3.md)
+- [公共技术点之Java动态代理](https://github.com/JackChan1999/Android_Source_Analysis/blob/master/common/common/%E5%85%AC%E5%85%B1%E6%8A%80%E6%9C%AF%E7%82%B9%E4%B9%8BJava%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86.md)
 
 ## Android源码知识
 
@@ -17,23 +34,7 @@ tags: [Android]
 
 ![img](https://github.com/yuxingxin/AndroidWidgetClassGraph/raw/master/img/android.jpg)
 
-[ViewGroup 源码解析](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis/blob/master/article/ViewGroup%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
 
-[Service源码解析](https://github.com/asLody/SourceAnalysis/blob/master/Service%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
-
-[Binder源码解析](https://github.com/xdtianyu/SourceAnalysis/blob/master/Binder%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
-
-[Handler源码解析](https://github.com/maoruibin/HandlerAnalysis)
-
-[Bundle源码解析](https://github.com/ASPOOK/BundleAnalysis)
-
-[LocalBroadcastManager源码解析](https://github.com/czhzero/AndroidSdkSourceAnalysis/blob/master/article/LocalBroadcastManager%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
-
-[LruCache源码解析](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis/blob/master/article/LruCache%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
-
-[MediaPlayer源码解析](https://github.com/lber19535/SourceAnalysis/blob/master/Media%20Player%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
-
-[SharePreferences源码解析](http://blog.csdn.net/yanbober/article/details/47866369)
 
 ### [yipianfengye/androidSource](https://github.com/yipianfengye/androidSource)
 
