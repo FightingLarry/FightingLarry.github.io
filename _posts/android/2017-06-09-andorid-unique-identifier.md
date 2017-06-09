@@ -101,7 +101,7 @@ Android系统2.3版本以上可以通过下面的方法得到Serial Number，且
 String SerialNumber = android.os.Build.SERIAL; 
 ```
 
-## Installtion ID
+## Installtion ID 或者叫 UUID
 
 以上几种方式都或多或少存在一定的局限性或者Bug，如果并不是确实需要对硬件本身进行绑定，使用自己生成的UUID也是一个不错的选择，因为该方法无需访问设备的资源，也跟设备类型无关。
 
@@ -143,46 +143,6 @@ public class Installation {
         out.close();
     }
 }
-```
-
-##  UUID
-
-
-生成一个唯一的UUID
-
-
-```java
-private static String sID = null;
-
-public static synchronized String getUUID(Context context) {
-    if (sID == null) {
-        File installation = new File(context.getFilesDir(), INSTALLATION);
-        try {
-            if (!installation.exists()) {
-                writeInstallationFile(installation);
-            }
-            sID = readInstallationFile(installation);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    return sID;
-}
-private static String readInstallationFile(File installation) throws IOException {
-        RandomAccessFile f = new RandomAccessFile(installation, "r");
-        byte[] bytes = new byte[(int) f.length()];
-        f.readFully(bytes);
-        f.close();
-        return new String(bytes);
-    }
-
-    private static void writeInstallationFile(File installation) throws IOException {
-        FileOutputStream out = new FileOutputStream(installation);
-        String id = UUID.randomUUID().toString();
-        out.write(id.getBytes());
-        out.close();
-    }
-
 ```
 
 ## cpu号
