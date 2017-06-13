@@ -7,8 +7,7 @@ tags: [Android,View]
 
 
 
-#《Android开发艺术探索》笔记
-
+# 《Android开发艺术探索》笔记
 
 
 本书是一本Android进阶类书籍，采用理论、源码和实践相结合的方式来阐述高水准的Android应用开发要点。本书从三个方面来组织内容。
@@ -21,39 +20,23 @@ tags: [Android,View]
 
 
 
-#目录
+# 目录
 
 第1章 Activity的生命周期和启动模式
-
 第2章 IPC机制
-
 第3章 View的事件体系
-
 第4章 View的工作原理
-
 第5章 理解RemoteViews
-
 第6章 Android的Drawable
-
 第7章 Android动画深入分析
-
 第8章 理解Window和WindowManager
-
 第9章 四大组件的工作过程
-
 第10章 Android的消息机制
-
 第11章 Android的线程和线程池
-
 第12章 Bitmap的加载和Cache
-
 第13章 综合技术
-
 第14章 JNI和NDK编程
-
 第15章 Android性能优化
-
-
 
 [TOC]
 
@@ -61,8 +44,7 @@ tags: [Android,View]
 
 
 
-#1 Activity的生命周期和启动模式
-
+# 1 Activity的生命周期和启动模式
 
 
 ##1.1 Activity的生命周期全面分析
@@ -71,7 +53,7 @@ tags: [Android,View]
 
 
 
-###1.1.1 典型情况下的生命周期分析
+### 1.1.1 典型情况下的生命周期分析
 
 Activity的生命周期和启动模式
 
@@ -93,7 +75,7 @@ Activity的生命周期和启动模式
 
 
 
-###1.1.2 异常情况下的生命周期分析
+### 1.1.2 异常情况下的生命周期分析
 
 1 系统配置变化导致Activity销毁重建
 
@@ -141,11 +123,11 @@ configChanges 一般常用三个选项：
 
 
 
-##1.2 Activity的启动模式
+## 1.2 Activity的启动模式
 
 
 
-###1.2.1 Activity的LaunchMode
+### 1.2.1 Activity的LaunchMode
 
 Android使用栈来管理Activity。
 
@@ -187,7 +169,7 @@ Android使用栈来管理Activity。
 
 
 
-###1.2.2 Activity的Flags
+### 1.2.2 Activity的Flags
 
 这些FLAG可以设定启动模式、可以影响Activity的运行状态。
 
@@ -209,7 +191,7 @@ Android使用栈来管理Activity。
 
 
 
-##1.3 IntentFilter的匹配规则
+## 1.3 IntentFilter的匹配规则
 
 Activity调用方式
 
@@ -229,7 +211,7 @@ Activity调用方式
 
 
 
-** action**
+** action **
 
 action是一个字符串,匹配是指与action的字符串完全一样,区分大小写。
 
@@ -239,7 +221,7 @@ Intent中如果没有指定action，那么匹配失败。
 
 
 
-** category**
+** category **
 
 category是一个字符串。
 
@@ -249,26 +231,18 @@ Intent可以没有category，但是如果你一旦有category，不管有几个�
 
 
 
-** data**
+** data **
 
 data的匹配规则与action一样，如果intent-filter中定义了data，那么Intent中必须要定义可匹配的data。
 
 intent-filter中data的语法：
 
-
-
         <data android:scheme="string"
-
         android:host="string"
-
         android:port="string"
-
         android:path="string"
-
         android:pathPattern="string"
-
         android:pathPrefix="string"
-
         android:mimeType="string"/>
 
 Intent中的data有两部分组成：mimeType和URI。mimeType是指媒体类型，比如
@@ -281,16 +255,12 @@ image/jpeg、audio/mpeg4-generic和video/等，可以表示图片、文本、视
 
 URI的结构：
 
-
-
         <scheme>://<host>:<port>/[<path>|<pathPrefix>|<pathPattern>]
 
 实际例子
 
-
-
         content://com.example.project:200/folder/subfolder/etc
-
+		
         http://www.baidu.com:80/search/info
 
 scheme：URI的模式，比如http、file、content等，默认值是 file 。
@@ -341,11 +311,10 @@ intent-filter中声明了 android.intent.category.DEFAULT 这个category的Activ
 
 
 
-#2 IPC机制
+# 2 IPC机制
 
 
-
-##2.1 Android IPC 简介
+## 2.1 Android IPC 简介
 
 - IPC即Inter-Process Communication，含义为进程间通信或者跨进程通信，是指两个进程之间进行数据交换的过程。
 
@@ -356,26 +325,16 @@ intent-filter中声明了 android.intent.category.DEFAULT 这个category的Activ
 - 在Android中，IPC的使用场景大概有以下：
 
 	- 有些模块由于特殊原因需要运行在单独的进程中。
-
 	- 通过多进程来获取多份内存空间。
-
 	- 当前应用需要向其他应用获取数据。
 
+## 2.2 Android中的多进程模式
 
-
-##2.2 Android中的多进程模式
-
-
-
-###2.2.1 开启多进程模式
+### 2.2.1 开启多进程模式
 
 在Android中使用多线程只有一种方法：给四大组件在Manifest中指定 android:process 属性。这个属性的值就是进程名。这意味着不能在运行时指定一个线程所在的进程。
 
-
-
 tips：使用 adb shell ps 或 adb shell ps|grep 包名 查看当前所存在的进程信息。
-
-
 
 两种进程命名方式的区别
 
@@ -391,10 +350,9 @@ tips：使用 adb shell ps 或 adb shell ps|grep 包名 查看当前所存在的
 
 
 
-###2.2.2 多线程模式的运行机制
+### 2.2.2 多线程模式的运行机制
 
 Android为每个进程都分配了一个独立的虚拟机，不同虚拟机在内存分配上有不同的地址空间，导致不同的虚拟机访问同一个类的对象会产生多份副本。例如不同进程的Activity对静态变量的修改，对其他进程不会造成任何影响。所有运行在不同进程的四大组件，只要它们之间需要通过内存在共享数据，都会共享失败。四大组件之间不可能不通过中间层来共享数据。
-
 
 
 多进程会带来以下问题：
@@ -413,8 +371,6 @@ SharedPreferences底层是 通过读/写XML文件实现的，并发读/写会导
 
 由于系统创建新的进程的同时分配独立虚拟机，其实这就是启动一个应用的过程。在多进程模式中，不同进程的组件拥有独立的虚拟机、Application以及内存空间。
 
-
-
 多进程相当于两个不同的应用采用了SharedUID的模式
 
 
@@ -431,43 +387,31 @@ SharedPreferences底层是 通过读/写XML文件实现的，并发读/写会导
 
 
 
-##2.3 IPC基础概念介绍
+## 2.3 IPC基础概念介绍
 
 主要介绍 Serializable 、 Parcelable 、 Binder 。Serializable和Parcelable接口可以完成对象的序列化过程，我们通过Intent和Binder传输数据时就需要Parcelabel和Serializable。还有的时候我们需要对象持久化到存储设备上或者通过网络传输到其他客户端，也需要Serializable完成对象持久化。
 
 
 
-###2.3.1 Serializable接口
+### 2.3.1 Serializable接口
 
 Serializable 是Java提供的一个序列化接口（ 空接口） ，为对象提供标准的序列化和反序列化操作。只需要一个类去实现 Serializable 接口并声明一个 serialVersionUID 即可实现序列化。
 
-
-
 	private static final long serialVersionUID = 8711368828010083044L
-
-
 
 serialVersionUID也可以不声明。如果不手动指定 serialVersionUID 的值，反序列化时如果当前类有所改变（ 比如增删了某些成员变量） ，那么系统就会重新计算当前类的hash值并更新 serialVersionUID 。这个时候当前类的 serialVersionUID 就和序列化数据中的serialVersionUID 不一致，导致反序列化失败，程序就出现crash。
 
-
-
 静态成员变量属于类不属于对象，不参与序列化过程，其次 transient 关键字标记的成员变量也不参与序列化过程。
-
-
 
 通过重写writeObject和readObject方法可以改变系统默认的序列化过程。
 
 
 
-###2.3.2 Parcelable接口
+### 2.3.2 Parcelable接口
 
 Parcel内部包装了可序列化的数据，可以在Binder中自由传输。序列化过程中需要实现的功能有序列化、反序列化和内容描述。
 
-
-
 序列化功能由 writeToParcel 方法完成,最终是通过 Parcel 的一系列writer方法来完成。
-
-   
 
        @Override
 
@@ -514,9 +458,7 @@ Parcel内部包装了可序列化的数据，可以在Binder中自由传输。�
 
 
 在Book(Parcel in)方法中，如果有一个成员变量是另一个可序列化对象，在反序列化过程中需要传递当前线程的上下文类加载器，否则会报无法找到类的错误。
-
-       
-
+      
        book = in.readParcelable(Thread.currentThread().getContextClassLoader());
 
 内容描述功能由 describeContents 方法完成，几乎所有情况下都应该返回0，仅当当前对象中存在文件描述符时返回1。
@@ -532,22 +474,17 @@ Parcel内部包装了可序列化的数据，可以在Binder中自由传输。�
 Serializable 是Java的序列化接口，使用简单但开销大，序列化和反序列化过程需要大量I/O操作。而 Parcelable 是Android中的序列化方式，适合在Android平台使用，效率高但是使用麻烦。 Parcelable 主要在内存序列化上，Parcelable 也可以将对象序列化到存储设备中或者将对象序列化后通过网络传输，但是稍显复杂，推荐使用 Serializable 。
 
 
-
-###2.3.3 Binder
+### 2.3.3 Binder
 
 Binder是Android中的一个类，实现了 IBinder 接口。从IPC角度说，Binder是Andoird的一种跨进程通讯方式，Binder还可以理解为一种虚拟物理设备，它的设备驱动是/dev/binder。从Android Framework角度来说，Binder是 ServiceManager 连接各种Manager( ActivityManager· 、 WindowManager )和相应 ManagerService 的桥梁。从Android应用层来说，Binder是客户端和服务端进行通信的媒介，当bindService时，服务端返回一个包含服务端业务调用的Binder对象，通过这个Binder对象，客户端就可以获取服务器端提供的服务或者数据（ 包括普通服务和基于AIDL的服务）。
-
-
 
 ![](http://gityuan.com/images/binder/prepare/IPC-Binder.jpg)
 
 > Binder通信采用C/S架构，从组件视角来说，包含Client、Server、ServiceManager以及binder驱动，其中ServiceManager用于管理系统中的各种服务。
 
+> 图中的Client,Server,Service Manager之间交互都是虚线表示，是由于它们彼此之间不是直接交互的，而是都通过与Binder驱动进行交互的，从而实现IPC通信方式。其中Binder驱动位于内核空间，Client,Server,Service Manager位于用户空间。Binder驱动和Service Manager可以看做是Android平台的基础架构，而Client和Server是Android的应用层，开发人员只需自定义实现client、Server端，借助Android的基本平台架构便可以直接进行IPC通信。
 
-
->图中的Client,Server,Service Manager之间交互都是虚线表示，是由于它们彼此之间不是直接交互的，而是都通过与Binder驱动进行交互的，从而实现IPC通信方式。其中Binder驱动位于内核空间，Client,Server,Service Manager位于用户空间。Binder驱动和Service Manager可以看做是Android平台的基础架构，而Client和Server是Android的应用层，开发人员只需自定义实现client、Server端，借助Android的基本平台架构便可以直接进行IPC通信。
-
->http://gityuan.com/2015/10/31/binder-prepare/
+> http://gityuan.com/2015/10/31/binder-prepare/
 
 
 
@@ -555,7 +492,7 @@ Android中Binder主要用于 Service ，包括AIDL和Messenger。普通Service�
 
 
 
-**由系统根据AIDL文件自动生成.java文件**
+** 由系统根据AIDL文件自动生成.java文件 **
 
 1. Book.java
 
@@ -583,7 +520,7 @@ IBookManager继承了 IInterface 接口，所有在Binder中传输的接口都�
 
 
 
-**Stub和Proxy类的内部方法和定义**
+** Stub和Proxy类的内部方法和定义 **
 
 ![](http://upload-images.jianshu.io/upload_images/1944615-3c92d9d160957e78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -637,7 +574,7 @@ AIDL文件不是必须的，之所以提供AIDL文件，是为了方便系统为
 
 
 
-**linkToDeath和unlinkToDeath**
+** linkToDeath和unlinkToDeath **
 
 如果服务端进程异常终止，我们到服务端的Binder连接断裂。但是，如果我们不知道Binder连接已经断裂，那么客户端功能会受影响。通过linkTODeath我们可以给Binder设置一个死亡代理，当Binder死亡时，我们就会收到通知。
 
@@ -675,7 +612,7 @@ AIDL文件不是必须的，之所以提供AIDL文件，是为了方便系统为
 
 
 
-##2.4 Android中的IPC方式
+## 2.4 Android中的IPC方式
 
 主要有以下方式：
 
@@ -691,7 +628,7 @@ AIDL文件不是必须的，之所以提供AIDL文件，是为了方便系统为
 
 
 
-###2.4.1 使用Bundle
+### 2.4.1 使用Bundle
 
 四大组件中的三大组件（ Activity、Service、Receiver） 都支持在Intent中传递 Bundle 数据。
 
@@ -699,7 +636,7 @@ Bundle实现了Parcelable接口，因此可以方便的在不同进程间传输�
 
 
 
-###2.4.2 使用文件共享
+### 2.4.2 使用文件共享
 
 我们可以序列化一个对象到文件系统中的同时从另一个进程中恢复这个对象。
 
@@ -711,7 +648,7 @@ Bundle实现了Parcelable接口，因此可以方便的在不同进程间传输�
 
 
 
-###2.4.3 使用Messenger
+### 2.4.3 使用Messenger
 
 Messenger可以在不同进程间传递Message对象。是一种轻量级的IPC方案，底层实现是AIDL。它对AIDL进行了封装，使得我们可以更简便的进行IPC。
 
@@ -737,7 +674,7 @@ Messenger中有一个 Hanlder 以串行的方式处理队列中的消息。不�
 
 
 
-###2.4.4 使用AIDL
+### 2.4.4 使用AIDL
 
 如果有大量的并发请求，使用Messenger就不太适合，同时如果需要跨进程调用服务端的方法，Messenger就无法做到了。这时我们可以使用AIDL。
 
@@ -803,7 +740,7 @@ AIDL接口中的参数除了基本类型以外都必须表明方向in/out。AIDL
 
 
 
-**权限验证**
+** 权限验证 **
 
 默认情况下，我们的远程服务任何人都可以连接，我们必须加入权限验证功能，权限验证失败则无法调用服务中的方法。通常有两种验证方法：
 
@@ -841,7 +778,7 @@ AIDL接口中的参数除了基本类型以外都必须表明方向in/out。AIDL
 
 
 
-###2.4.5 使用ContentProvider
+### 2.4.5 使用ContentProvider
 
 ==ContentProvider是四大组件之一，天生就是用来进程间通信。和Messenger一样，其底层实现是用Binder。==
 
@@ -863,7 +800,7 @@ ContentProvider是通过Uri来区分外界要访问的数据集合，例如外�
 
 
 
-###2.4.6 使用Socket
+### 2.4.6 使用Socket
 
 Socket也称为“套接字”，分为流式套接字和用户数据报套接字两种，分别对应于TCP和UDP协议。Socket可以实现计算机网络中的两个进程间的通信，当然也可以在本地实现进程间的通信。我们以一个跨进程的聊天程序来演示。
 
@@ -879,7 +816,7 @@ Socket也称为“套接字”，分为流式套接字和用户数据报套接�
 
 
 
-##2.5 Binder连接池
+## 2.5 Binder连接池
 
 前面提到AIDL的流程是：首先创建一个service和AIDL接口，接着创建一个类继承自AIDL接口中的Stub类并实现Stub中的抽象方法，客户端在Service的onBind方法中拿到这个类的对象，然后绑定这个service，建立连接后就可以通过这个Stub对象进行RPC。
 
@@ -901,27 +838,27 @@ Socket也称为“套接字”，分为流式套接字和用户数据报套接�
 
 
 
-##2.6 选用合适的IPC方式
+## 2.6 选用合适的IPC方式
 
 ![](http://images2015.cnblogs.com/blog/757858/201604/757858-20160421103323491-1740712324.png)
 
 
 
-#3 View的事件体系
+# 3 View的事件体系
 
 本章介绍View的事件分发和滑动冲突问题的解决方案。
 
-##3.1 view的基础知识
+## 3.1 view的基础知识
 
 View的位置参数、MotionEvent和TouchSlop对象、VelocityTracker、GestureDetector和Scroller对象。
 
-###3.1.1什么是view
+### 3.1.1什么是view
 
 View是Android中所有控件的基类，View的本身可以是单个空间，也可以是多个控件组成的一组控件，即ViewGroup，ViewGroup继承自View，其内部可以有子View，这样就形成了View树的结构。
 
 
 
-###3.1.2 View的位置参数
+### 3.1.2 View的位置参数
 
 View的位置主要由它的四个顶点来决定，即它的四个属性：top、left、right、bottom，分别表示View左上角的坐标点（ top，left） 以及右下角的坐标点（ right，bottom） 。
 
@@ -959,9 +896,9 @@ Android3.0后，View增加了x、y、translationX和translationY这几个参数�
 
 top,left表示原始左上角坐标，而x,y表示变化后的左上角坐标。在View没有平移时，x=left,y=top。==View平移的过程中，top和left不会改变，改变的是x、y、translationX和translationY。==
 
-###3.1.3 MotionEvent和TouchSlop
+### 3.1.3 MotionEvent和TouchSlop
 
-**MotionEvent**
+** MotionEvent **
 
 事件类型
 
@@ -995,7 +932,7 @@ TouchSloup是系统所能识别出的被认为是滑动的最小距离，这是�
 
 当我们处理滑动时，比如滑动距离小于这个值，我们就可以过滤这个事件（系统会默认过滤），从而有更好的用户体验。
 
-###3.1.4 VelocityTracker、GestureDetector和Scroller
+### 3.1.4 VelocityTracker、GestureDetector和Scroller
 
 **VelocityTracker**
 
@@ -1093,11 +1030,11 @@ TouchSloup是系统所能识别出的被认为是滑动的最小距离，这是�
 
 
 
-##3.2 View的滑动
+## 3.2 View的滑动
 
 三种方式实现View滑动
 
-###3.2.1 使用scrollTo/scrollBy
+### 3.2.1 使用scrollTo/scrollBy
 
 scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动，而scrollTo则实现了绝对滑动。
 
@@ -1107,7 +1044,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-###3.2.2 使用动画
+### 3.2.2 使用动画
 
 使用动画移动View，主要是操作View的translationX和translationY属性，既可以采用传统的View动画，也可以采用属性动画，如果使用属性动画，为了能够兼容3.0以下的版本，需要采用开源动画库nineolddandroids。 如使用属性动画：(View在100ms内向右移动100像素)
 
@@ -1117,13 +1054,13 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 	
 
-###3.2.3 改变布局属性
+### 3.2.3 改变布局属性
 
 通过改变布局属性来移动View，即改变LayoutParams。
 
 
 
-###3.2.4 各种滑动方式的对比
+### 3.2.4 各种滑动方式的对比
 
 - scrollTo/scrollBy：操作简单，适合对View内容的滑动；
 
@@ -1133,11 +1070,11 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-##3.3 弹性滑动
+## 3.3 弹性滑动
 
 
 
-###3.3.1 使用Scroller
+### 3.3.1 使用Scroller
 
 使用Scroller实现弹性滑动的典型使用方法如下：
 
@@ -1245,7 +1182,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-###3.3.2 通过动画
+### 3.3.2 通过动画
 
 动画本身就是一种渐近的过程，因此通过动画来实现的滑动本身就具有弹性。实现也很简单：
 
@@ -1283,7 +1220,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-###3.3.3 使用延时策略
+### 3.3.3 使用延时策略
 
 延时策略的核心思想是通过发送一系列延时信息从而达到一种渐近式的效果，具体可以通过Hander和View的postDelayed方法，也可以使用线程的sleep方法。 下面以Handler为例：
 
@@ -1333,11 +1270,11 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-##3.4 View的事件分发机制
+## 3.4 View的事件分发机制
 
 
 
-###3.4.1 点击事件的传递规则
+### 3.4.1 点击事件的传递规则
 
 点击事件是MotionEvent。首先我们先看看下面一段伪代码，通过它我们可以理解到点击事件的传递规则：
 
@@ -1415,17 +1352,17 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-###3.4.2 事件分发的源码解析
+### 3.4.2 事件分发的源码解析
 
 略
 
-##3.5 滑动冲突
+## 3.5 滑动冲突
 
 在界面中，只要内外两层同时可以滑动，这个时候就会产生滑动冲突。滑动冲突的解决有固定的方法。
 
 
 
-###3.5.1 常见的滑动冲突场景
+### 3.5.1 常见的滑动冲突场景
 
 ![](http://static.oschina.net/uploads/img/201511/01205227_RmWK.jpg)
 
@@ -1441,7 +1378,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-###3.5.2 滑动冲突的处理规则
+### 3.5.2 滑动冲突的处理规则
 
 对于场景一，处理的规则是：当用户左右（ 上下） 滑动时，需要让外部的View拦截点击事件，当用户上下（ 左右） 滑动的时候，需要让内部的View拦截点击事件。根据滑动的方向判断谁来拦截事件。
 
@@ -1455,7 +1392,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-###3.5.3 滑动冲突的解决方式
+### 3.5.3 滑动冲突的解决方式
 
 **外部拦截法**
 
@@ -1607,7 +1544,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-#4 View的工作原理
+# 4 View的工作原理
 
 主要内容
 
@@ -1621,7 +1558,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-##4.1 初识ViewRoot和DecorView
+## 4.1 初识ViewRoot和DecorView
 
 ViewRoot的实现是 ViewRootImpl 类，是连接WindowManager和DecorView的纽带，View的三大流程（ mearsure、layout、draw） 均是通过ViewRoot来完成。当Activity对象被创建完毕后，会将DecorView添加到Window中，同时创建 ViewRootImpl 对象，并将ViewRootImpl 对象和DecorView建立连接，源码如下：
 
@@ -1683,13 +1620,13 @@ ViewGroup content = findViewById(R.android.id.content);
 
 
 
-##4.2 理解MeasureSpec
+## 4.2 理解MeasureSpec
 
 MeasureSpec决定了一个View的尺寸规格。但是父容器会影响View的MeasureSpec的创建过程。系统将View的 LayoutParams 根据父容器所施加的规则转换成对应的MeasureSpec，然后根据这个MeasureSpec来测量出View的宽高。
 
 
 
-###4.2.1 MeasureSpec
+### 4.2.1 MeasureSpec
 
 MeasureSpec代表一个32位int值，高2位代表SpecMode（ 测量模式） ，低30位代表SpecSize（ 在某个测量模式下的规格大小） 。
 
@@ -1703,7 +1640,7 @@ SpecMode有三种：
 
 
 
-###4.2.2 MeasureSpec和LayoutParams的对应关系
+### 4.2.2 MeasureSpec和LayoutParams的对应关系
 
 对于DecorView，其MeasureSpec由窗口的尺寸和其自身的LayoutParams共同确定。而View的MeasureSpec由父容器的MeasureSpec和自身的LayoutParams共同决定。
 
@@ -1733,11 +1670,11 @@ parentSize是指父容器中目前可使用的大小。
 
 
 
-##4.3 View的工作流程
+## 4.3 View的工作流程
 
 
 
-###4.3.1 measure过程
+### 4.3.1 measure过程
 
 **View的measure过程**
 
@@ -1859,7 +1796,7 @@ onWindowFocusChanged这个方法的含义是：VieW已经初始化完毕了，�
 
 
 
-###4.3.2 layout过程
+### 4.3.2 layout过程
 
 layout的作用是ViewGroup用来确定子View的位置，当ViewGroup的位置被确定后，它会在onLayout中遍历所有的子View并调用其layout方法，在 layout 方法中， onLayout 方法又会被调用。
 
@@ -1885,7 +1822,7 @@ View的 layout 方法确定本身的位置，源码流程如下：
 
 在View的默认实现中，View的测量宽高和最终宽高相等，只不过测量宽高形成于measure过程，最终宽高形成于layout过程。但重写view的layout方法可以使他们不相等。
 
-###4.3.3 draw过程
+### 4.3.3 draw过程
 
 View的绘制过程遵循如下几步：
 
@@ -1903,11 +1840,11 @@ ViewGroup会默认启用 setWillNotDraw 为ture，导致系统不会去执行 on
 
 
 
-##4.4 自定义View
+## 4.4 自定义View
 
 
 
-###4.4.1 自定义View的分类
+### 4.4.1 自定义View的分类
 
 **继承View 重写onDraw方法**
 
@@ -1933,7 +1870,7 @@ ViewGroup会默认启用 setWillNotDraw 为ture，导致系统不会去执行 on
 
 
 
-###4.4.2 自定义View须知
+### 4.4.2 自定义View须知
 
 1. 直接继承View或ViewGroup的控件， 需要在onmeasure中对wrap_content做特殊处理。指定wrap_content模式下的默认宽/高。
 
@@ -1947,7 +1884,7 @@ ViewGroup会默认启用 setWillNotDraw 为ture，导致系统不会去执行 on
 
 
 
-###4.4.3 自定义View实例
+### 4.4.3 自定义View实例
 
 - 继承View重写onDraw方法：[CircleView](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_4/src/com/ryg/chapter_4/ui/CircleView.java)
 
@@ -2029,7 +1966,7 @@ onLayout方法中，在放置子元素时候也要考虑padding和margin。
 
 
 
-###4.4.4 自定义View的思想
+### 4.4.4 自定义View的思想
 
 - 掌握基本功，比如View的弹性滑动、滑动冲突、绘制原理等
 
@@ -2037,7 +1974,7 @@ onLayout方法中，在放置子元素时候也要考虑padding和margin。
 
 
 
-#5 理解RemoteViews
+# 5 理解RemoteViews
 
 什么是远程view呢？它和远程service一样，RemoteViews可以在其他进程中显示。我们可以跨进程更新它的界面。在Android中，主要有两种场景：通知栏和桌面小部件。
 
@@ -2047,15 +1984,15 @@ onLayout方法中，在放置子元素时候也要考虑padding和margin。
 
 
 
-##5.1 RemoteViews的应用
+## 5.1 RemoteViews的应用
 
 通知栏主要是通过NotificationManager的notify方法实现。桌面小部件是通过APPWidgetProvider来实现。APPWidgetProvider本质是一个广播。RemoteViews运行在系统的SystemServer进程。
 
-###5.1.1 RemoteViews在通知栏的应用
+### 5.1.1 RemoteViews在通知栏的应用
 
 我们用到自定义通知，首先要提供一个布局文件，然后通过RemoteViews来加载，可以自定义通知的样式。更新view时，通过RemoteViews提供的一系列方法。如果给一个控件加点击事件，要使用PendingIntent。
 
-###5.1.2 RemoteViews在桌面小部件的应用
+### 5.1.2 RemoteViews在桌面小部件的应用
 
 AppWidgetProvider是实现桌面小部件的类，本质是一个BroadcastReceiver。开发步骤如下：
 
@@ -2109,7 +2046,7 @@ AppWidgetProvider除了onUpdate方法，还有一系列方法。这些方法会�
 
 
 
-###5.1.3 PendingIntent概述
+### 5.1.3 PendingIntent概述
 
 PendingIntent表示一种处于待定的状态的intent。典型场景是RemoteViews添加单击事件。通过send和cancel方法来发送和取消待定intent。
 
@@ -2181,7 +2118,7 @@ flags参数的含义
 
 
 
-##5.2 RemoteViews的内部机制
+## 5.2 RemoteViews的内部机制
 
 **构造方法**
 
@@ -2249,7 +2186,7 @@ apply和reApply的区别在于：apply会加载布局并更新界面，而reAppl
 
 
 
-##5.3 RemoteViews的意义
+## 5.3 RemoteViews的意义
 
 当一个应用需要更新另一个应用的某个界面，我们可以选择用AIDL来实现，但如果更新比较频繁，效率会有问题，同时AIDL接口就可能变得很复杂。如果采用RemoteViews就没有这个问题，但RemoteViews仅支持一些常用的View，如果界面的View都是RemoteViews所支持的，那么就可以考虑采用RemoteViews。
 
@@ -2257,13 +2194,13 @@ demo [A](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_5
 
 
 
-#6 Android的Drawable
+# 6 Android的Drawable
 
 Drawable表示的是一种可以在Canvas上进行绘制的抽象概念，它的种类有很多，最常见的就是颜色和图片。优点：使用简单，比自定义View成本低很多，非图片类型的Drawable占用空间较小。本章中，首先描述Drawable的层次关系，接着介绍Drawable的分类，最后介绍自定义Drawable相关的知识。
 
 
 
-##6.1 Drawable简介
+## 6.1 Drawable简介
 
 Drawable有很多种，都表示图像的概念，但不全是图片，通过颜色也可以构造出各式各样的图像效果。实际开发中，Drawable常被用来作为View的背景使用。Drawable一般是通过XML来定义的，Drawable是所有Drawable对象的基类。
 
@@ -2273,11 +2210,11 @@ Drawable的内部宽、高这个参数比较重要，通过getIntrinsicWidth/get
 
 
 
-##6.2 Drawable的分类
+## 6.2 Drawable的分类
 
 常见的有BitmapDrawable、ShapeDrawable、LayerDrawable以及StateListDrawable等。
 
-###6.2.1 BitmapDrawable
+### 6.2.1 BitmapDrawable
 
 表示的就是一张图片，可以直接引用原始图片即可，也可以通过XML描述它，从而设置更多效果。
 
@@ -2347,7 +2284,7 @@ Drawable的内部宽、高这个参数比较重要，通过getIntrinsicWidth/get
 
 
 
-###6.2.2 ShapeDrawable
+### 6.2.2 ShapeDrawable
 
 可以理解为通过颜色来构造的图形，可以是纯色或渐变的图形。
 
@@ -2497,7 +2434,7 @@ Drawable的内部宽、高这个参数比较重要，通过getIntrinsicWidth/get
 
 
 
-###6.2.3 LayerDrawable
+### 6.2.3 LayerDrawable
 
 它表示一种层次化的Drawable集合，通过将不同的Drawable放置在不同层后达到一种叠加效果。
 
@@ -2539,7 +2476,7 @@ Drawable的内部宽、高这个参数比较重要，通过getIntrinsicWidth/get
 
 
 
-### 6.2.4 StateListDrawable
+###  6.2.4 StateListDrawable
 
 对应`<selector>`标签。它表示Drawable集合，每个Drawable对应View的一种状态，这样系统就会根据View的状态来选择合适的Drawable。主要用于设置可点击View的背景。
 
@@ -2599,7 +2536,7 @@ view的常见状态
 
 
 
-### 6.2.5 LevelListDrawable
+###  6.2.5 LevelListDrawable
 
 对应`<level-list>`标签。同样表示Drawable集合，集合中的每个Drawable都会有一个等级的概念，根据等级不同来切换对于的Drawable。当它作为View的背景时，可以通过Drawable的setLevel方法来设置不同的等级从而切换具体的Drawable。level的值从0-10000，默认为0。
 
@@ -2623,7 +2560,7 @@ view的常见状态
 
 
 
-###6.2.6 TransitionDrawable
+### 6.2.6 TransitionDrawable
 
 对应`<transition>`标签。用来实现两个Drawable之间淡入淡出的效果。
 
@@ -2649,7 +2586,7 @@ startTransition和reverseTransition方法实现淡入淡出的效果以及它的
 
 
 
-###6.2.7 InsetDrawable
+### 6.2.7 InsetDrawable
 
 对应于`<inset>`标签。它可以将其他Drawable内嵌到自己当中，并可以在四周留下一定的间距。当一个View希望自己的背景比自己的实际区域小的时候，可以采用InsetDrawable来实现。通过LayerDrawable也可以实现。
 
@@ -2681,7 +2618,7 @@ startTransition和reverseTransition方法实现淡入淡出的效果以及它的
 
 
 
-###6.2.8 ScaleDrawable
+### 6.2.8 ScaleDrawable
 
  ScaleDrawable对应于xml文件中的`<scale>`标签，可以根据自己的level将指定的drawable缩放到一定比例。
 
@@ -2779,7 +2716,7 @@ level=0的时候，表示完全裁剪，level=10000的时候表示完全不裁�
 
 
 
-##6.3 自定义Drawable
+## 6.3 自定义Drawable
 
 在第5章中，我们分析了View的工作原理，系统会调用Drawable的draw方法绘制view的背景。所以我们可以通过重写Drawable的draw方法来自定义Drawable。但是，通常我们没必要自定义Drawable，因为自定义Drawable无法在XML中使用。只有在特殊情况下可以使用自定义Drawable。
 
@@ -2859,7 +2796,7 @@ level=0的时候，表示完全裁剪，level=10000的时候表示完全不裁�
 
 
 
-#7 Android动画深入分析
+# 7 Android动画深入分析
 
 Android动画分为三种：
 
@@ -2883,7 +2820,7 @@ Android动画分为三种：
 
 
 
-##7.1 View动画
+## 7.1 View动画
 
 View动画的作用对象是View，支持四种动画效果：
 
@@ -2897,7 +2834,7 @@ View动画的作用对象是View，支持四种动画效果：
 
 
 
-###7.1.1 View动画的种类
+### 7.1.1 View动画的种类
 
 上述四种变换效果对应着Animation四个子类： TranslateAnimation 、 ScaleAnimation 、 RotateAnimation 和 AlphaAnimation 。这四种动画皆可以通过XML定义，也可以通过代码来动态创建。
 
@@ -3043,13 +2980,13 @@ xml定义动画
 
 
 
-###7.1.2 自定义View动画
+### 7.1.2 自定义View动画
 
 除了系统提供的四种动画外，我们可以根据需求自定义动画，自定义一个新的动画只需要继承 Animation 这个抽象类，然后重写它的 inatialize 和 applyTransformation 这两个方法，在 initialize 方法中做一些初始化工作，在 Transformation 方法中进行矩阵变换即可，很多时候才有 Camera 来简化矩阵的变换过程，其实自定义动画的主要过程就是矩阵变换的过程，矩阵变换是数学上的概念，需要掌握该方面知识方能轻松实现自定义动画，例子可以参考 Android 的 APIDemos 中的一个自定义动画 [Rotate3dAnimation](https://github.com/appium/android-apidemos/blob/master/src/io/appium/android/apis/animation/Rotate3dAnimation.java) ，这是一个可以围绕 Y 轴旋转并同时沿着 Z 轴平移从而实现类似一种 3D 效果的动画。
 
 
 
-###7.1.3 帧动画
+### 7.1.3 帧动画
 
 帧动画是顺序播放一组预先定义好的图片，使用简单，但容易引起OOM，所以在使用帧动画时应尽量避免使用过多尺寸较大的图片。系统提供了另一个类 AnimationDrawble 来使用帧动画，使用的时候，需要通过 XML 定义一个 AnimationDrawble ，如下：
 
@@ -3095,13 +3032,13 @@ xml定义动画
 
 
 
-##7.2 View动画的特殊使用场景
+## 7.2 View动画的特殊使用场景
 
 View 动画除了可以实现的四种基本的动画效果外，还可以在一些特殊的场景下使用，比如在 ViewGroup 中可以控制子元素的出场效果，在 Activity 中可以实现不同 Activity 之间的切换效果。
 
 
 
-###7.2.1 LayoutAnimation
+### 7.2.1 LayoutAnimation
 
 作用于ViewGroup，为ViewGroup指定一个动画，当它的子元素出场时都会具有这种动画效
 
@@ -3151,7 +3088,7 @@ View 动画除了可以实现的四种基本的动画效果外，还可以在一
 
     listView.startLayoutAnimation();
 
-###7.2.2 Activity的切换效果
+### 7.2.2 Activity的切换效果
 
 我们可以自定义Activity的切换效果，主要通过overridePendingTransition(int enterAnim , int exitAnim) 方法。该方法必须要在 startActivity(intent) 和 finish() 方法之后调用才会有效。
 
@@ -3181,7 +3118,7 @@ Fragment 也可以添加切换动画，通过 FragmentTransation 中的 setCusto
 
 
 
-##7.3 属性动画
+## 7.3 属性动画
 
 属性动画是 API 11 引入的新特性，属性动画可以对任何对象做动画，甚至还可以没有对象。可以在一个时间间隔内完成对象从一个属性值到另一个属性值的改变。==与View动画相比，属性动画几乎无所不能，只要对象有这个属性，它都能实现动画效果。==API11以下可以通过 nineoldandroids 库来兼容以前版本。
 
@@ -3339,7 +3276,7 @@ Fragment 也可以添加切换动画，通过 FragmentTransation 中的 setCusto
 
 
 
-###7.3.2 理解差值器和估值器
+### 7.3.2 理解差值器和估值器
 
 1. 时间插值器（ TimeInterpolator） 的作用是根据时间流逝的百分比来计算出当前属性值改变的百分比，系统预置的有LinearInterpolator（ 线性插值器：匀速动画） ，AccelerateDecelerateInterpolator（ 加速减速插值器：动画两头慢中间快） ，DecelerateInterpolator(减速插值器：动画越来越慢） 。
 
@@ -3357,7 +3294,7 @@ Fragment 也可以添加切换动画，通过 FragmentTransation 中的 setCusto
 
 
 
-###7.3.3 属性动画的监听器
+### 7.3.3 属性动画的监听器
 
 属性动画提供了监听器用于监听动画的播放过程，主要有如下两个接口：AnimatorUpdateListener 和 AnimatorListener 。
 
@@ -3389,7 +3326,7 @@ AnimatorUpdateListener会监听整个动画的过程，动画由许多帧组成�
 
 
 
-###7.3.4 对任意属性做动画
+### 7.3.4 对任意属性做动画
 
 属性动画原理：属性动画要求动画作用的对象提供 get 方法和 set 方法，属性动画根据外界传递该属性的初始值和最终值以动画的效果去多次调用 set 方法，每次传递给 set 方法的值都不一样，确切的来说是随着时间的推移，所传递的值越来越接近最终值。总结一下，我们对 object 对象属性 abc 做动画，如果想要动画生效，要同时满足两个条件：
 
@@ -3509,13 +3446,13 @@ ValueAnimator 本身不作用于任何对象，也就是说直接使用它没有
 
 
 
-###7.3.5 属性动画的工作原理
+### 7.3.5 属性动画的工作原理
 
 属性动画需要运行在有Looper的线程中，系统通过反射调用被作用对象get/set方法。
 
 
 
-##7.4 使用动画的注意事项
+## 7.4 使用动画的注意事项
 
 1. OOM问题
 
@@ -3547,13 +3484,13 @@ View动画是对View的影像做动画，View的真实位置没有变动，动�
 
 
 
-#8 理解Window和WindowMananger
+# 8 理解Window和WindowMananger
 
 Window是一个抽象类，具体实现是 PhoneWindow 。不管是 Activity 、 Dialog 、 Toast 它们的视图都是附加在Window上的，因此Window实际上是View的直接管理者。WindowManager 是外界访问Window的入口，通过WindowManager可以创建Window，而Window的具体实现位于 WindowManagerService 中，WindowManager和WindowManagerService的交互是一个IPC过程。
 
 
 
-##8.1 Window和WindowManager
+## 8.1 Window和WindowManager
 
 下面代码演示了通过WindowManager添加Window的过程：
 
@@ -3659,13 +3596,13 @@ WindowManager提供的功能很简单，常用的只有三个方法：
 
 
 
-##8.2 Window的内部机制
+## 8.2 Window的内部机制
 
 Window是一个抽象的概念，每一个Window都对应着一个View和一个ViewRootImpl，Window和View通过ViewRootImpl来建立联系。因此Window并不是实际存在的，它是以View的形式存在的。所以WindowManager的三个方法都是针对View的，说明View才是Window存在的实体。在实际使用中无法直接访问Window，必须通过WindowManager来访问Window。
 
 
 
-###8.2.1 Window的添加过程
+### 8.2.1 Window的添加过程
 
 Window的添加过程需要通过WindowManager的addView()来实现, 而WindowManager是一个接口, 它的真正实现是WindowManagerImpl类。
 
@@ -3689,7 +3626,7 @@ WindowManagerService内部会为每一个应用保留一个单独的Session.
 
 
 
-###8.2.2 Window的删除过程
+### 8.2.2 Window的删除过程
 
 Window 的删除过程和添加过程一样, 都是先通过WindowManagerImpl后, 在进一步通过WindowManagerGlobal的removeView()来实现的.
 
@@ -3719,7 +3656,7 @@ die方法中只是做了简单的判断, 如果是异步删除那么就发送一
 
 
 
-###8.2.3 Window的更新过程
+### 8.2.3 Window的更新过程
 
 WindowManagerGlobal#updateViewLayout()方法做的比较简单, 它需要更新View的LayoutParams并替换掉老的LayoutParams, 接着在更新ViewRootImpl中的LayoutParams. 这一步主要是通过setLayoutParams()方法实现.
 
@@ -3729,13 +3666,13 @@ WindowManagerGlobal#updateViewLayout()方法做的比较简单, 它需要更新V
 
 
 
-##8.3 Window的创建过程
+## 8.3 Window的创建过程
 
 由之前的分析可以知道，View是Android中视图的呈现方式，但是View不能单独存在，必须附着在Window这个抽象的概念上面，因此有视图的地方就有Window。这些视图包括：Activity、Dialog、Toast、PopUpWindow、菜单等等。
 
 
 
-###8.3.1 Activity的Window创建过程
+### 8.3.1 Activity的Window创建过程
 
 Activity的大体启动流程: 最终会由ActivityThread中的PerformLaunchActivity()来完成整个启动过程, 这个方法内部会通过类加载器创建Activity的实例对象, 并调用其attach()方法为其关联运行过程中所依赖的一系列上下文环境变量。
 
@@ -3761,7 +3698,7 @@ Activity将具体实现交给了Window处理, 而Window的具体实现就是Phon
 
 在ActivityThread#handleResumeActivity()方法中, 首先会调用Activity#onResume(), 接着会调用Activity#makeVisible(), 正是在makeVisible方法中, DecorView真正的完成了添加和显示这两个过程。
 
-###8.3.2 Dialog的Window创建过程
+### 8.3.2 Dialog的Window创建过程
 
 Dialog的Window的创建过程和Activity类似, 有如下几步
 
@@ -3797,7 +3734,7 @@ Dialog的创建后的实际就是PhoneWindow, 这个过程和Activity的Window�
 
 
 
-###8.3.3 Toast的Window创建过程
+### 8.3.3 Toast的Window创建过程
 
 Toast和Dialog不同, 它的工作过程就稍显复杂. 首先Toast也是基于Window来实现的. 但是由于Toast具有定时取消的功能, 所以系统采用了Handler. 在Toast的内部有两类IPC过程, 第一类是Toast访问NotificationManagerService()后面简称NMS. 第二类是NotificationManagerService回调Toast里的TN接口.
 
@@ -3857,13 +3794,13 @@ TN的handleHide中会将Toast的视图从Window中移除.
 
 
 
-#9 四大组件的工作过程
+# 9 四大组件的工作过程
 
 本章的意义在于加深对四大组件工作方式的认识，有助于加深对Android整体的体系结构的认识。很多情况下，只有对Android的体系结构有一定认识，在实际开发中才能写出优秀的代码。 读者对四大组件的工作过程有一个感性的认识并且能够给予上层开发一些指导意义。
 
 
 
-##9.1 四大组件的运行状态
+## 9.1 四大组件的运行状态
 
 Android的四大组件除了BroadcastReceiver以外，都需要在AndroidManifest文件注册，BroadcastReceiver可以通过代码注册。调用方式上，除了ContentProvider以外的三种组件都需要借助intent。
 
@@ -3903,7 +3840,7 @@ Android的四大组件除了BroadcastReceiver以外，都需要在AndroidManifes
 
 
 
-##9.2 Activity的工作过程
+## 9.2 Activity的工作过程
 
 ![](https://hujiaweibujidao.github.io/images/androidart_activity.png)
 
@@ -3945,7 +3882,7 @@ manifest注册）
 
 
 
-##9.3 Service的工作过程
+## 9.3 Service的工作过程
 
 1. 启动状态：执行后台计算
 
@@ -3957,7 +3894,7 @@ manifest注册）
 
 
 
-###9.3.1 Service的启动过程
+### 9.3.1 Service的启动过程
 
 ![](http://hujiaweibujidao.github.io/images/androidart_service1.png)
 
@@ -4001,7 +3938,7 @@ startServiceCommon方法又会通过 ActivityManagerNative.getDefault() （ 实�
 
 
 
-###9.3.2 Service的绑定过程
+### 9.3.2 Service的绑定过程
 
 ![](http://hujiaweibujidao.github.io/images/androidart_service2.png)
 
@@ -4049,11 +3986,11 @@ startServiceCommon方法又会通过 ActivityManagerNative.getDefault() （ 实�
 
 
 
-##9.4 BroadcastReceiver的工作过程
+## 9.4 BroadcastReceiver的工作过程
 
 简单回顾一下广播的使用方法, 首先定义广播接收者, 只需要继承BroadcastReceiver并重写onReceive()方法即可. 定义好了广播接收者, 还需要注册广播接收者, 分为两种静态注册或者动态注册. 注册完成之后就可以发送广播了.
 
-###9.4.1 广播的注册过程
+### 9.4.1 广播的注册过程
 
 ![](http://hujiaweibujidao.github.io/images/androidart_broadcastreceiver1.png)
 
@@ -4069,7 +4006,7 @@ startServiceCommon方法又会通过 ActivityManagerNative.getDefault() （ 实�
 
 
 
-###9.4.2 广播的发送和接收过程
+### 9.4.2 广播的发送和接收过程
 
 ![](http://www.qingpingshan.com/uploads/allimg/160817/1619104351-1.png)
 
@@ -4131,7 +4068,7 @@ android 3.1开始就增添了两个标记为. 分别是FLAG_INCLUDE_STOPPED_PACK
 
 
 
-##9.5 ContentProvider的工作机制
+## 9.5 ContentProvider的工作机制
 
 ContentProvider是一种内容共享型组件, 它通过Binder向其他组件乃至其他应用提供数据. 当ContentProvider所在的进程启动时, ContentProvider会同时启动并发布到AMS中. 要注意:这个时候ContentProvider的onCreate()方法是先于Application的onCreate()执行的,这一点在四大组件是少有的现象.
 
@@ -4199,7 +4136,7 @@ ContentProvider的android:multiprocess属性决定它是否是单实例，默认
 
 
 
-#10 Android的消息机制
+# 10 Android的消息机制
 
 Android的消息机制主要是指Handler的运行机制。从开发的角度来说，Handler是Android消息机制的上层接口。Handler的运行需要底层的 MessageQueue 和 Looper 的支撑。
 
@@ -4213,7 +4150,7 @@ Android的消息机制主要是指Handler的运行机制。从开发的角度来
 
 
 
-##10.1 Android的消息机制概述
+## 10.1 Android的消息机制概述
 
 ![](http://wujingchao.com/assets/Handler%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.png)
 
@@ -4227,11 +4164,11 @@ Android的消息机制主要是指Handler的运行机制。从开发的角度来
 
 
 
-##10.2 Android的消息机制分析
+## 10.2 Android的消息机制分析
 
 
 
-###10.2.1 ThreadLocal的工作原理
+### 10.2.1 ThreadLocal的工作原理
 
 ThreadLocal是一个线程内部的数据存储类，通过它可以在指定线程中存储数据，数据存储后，只有在指定线程中可以获取到存储的数据，对于其他线程来说无法获得数据。
 
@@ -4317,7 +4254,7 @@ ThreadLocal的get方法：
 
 
 
-###10.2.2 消息队列的工作原理
+### 10.2.2 消息队列的工作原理
 
 消息队列指的是MessageQueue，主要包含两个操作：插入和读取。读取操作本身会伴随着删除操作。
 
@@ -4335,7 +4272,7 @@ next()的源码实现也是从单链表中取出一个元素的操作，next()�
 
 
 
-###10.2.3 Looper的工作原理
+### 10.2.3 Looper的工作原理
 
 Looper在Android的消息机制中扮演着消息循环的角色，具体来说就是它会不停地从MessageQueue中查看是否有新消息，如果有新消息就会立即处理，否则就一直阻塞在那里。
 
@@ -4353,7 +4290,7 @@ loop()方法会调用MessageQueue的next()方法来获取新消息，而next是�
 
 
 
-###10.2.4 Handler的工作原理
+### 10.2.4 Handler的工作原理
 
 Handler的工作主要包含消息的发送和接收过程。通过post的一系列方法和send的一系列方法来实现。
 
@@ -4395,7 +4332,7 @@ Handler的构造方法
 
 
 
-##10.3 主线程的消息循环
+## 10.3 主线程的消息循环
 
 Android的主线程就是ActivityThread，主线程的入口方法为main(String[] args)，在main方法中系统会通过Looper.prepareMainLooper()来创建主线程的Looper以及MessageQueue，并通过Looper.loop()来开启主线程的消息循环。
 
@@ -4417,7 +4354,7 @@ ActivityThread通过ApplicationThread和AMS进行进程间通信，AMS以进程�
 
 
 
-#11 Android的线程和线程池
+# 11 Android的线程和线程池
 
 在Android系统，线程主要分为主线程和子线程，主线程处理和界面相关的事情，而子线程一般用于执行耗时操作。AsyncTask底层是线程池；IntentService/HandlerThread底层是线程；
 
@@ -4441,7 +4378,7 @@ ActivityThread通过ApplicationThread和AMS进行进程间通信，AMS以进程�
 
 
 
-##11.1 主线程和子线程
+## 11.1 主线程和子线程
 
 主线程主要处理界面交互逻辑，由于用户随时会和界面交互，所以主线程在任何时候都需要有较高响应速度，则不能执行耗时的任务；
 
@@ -4449,11 +4386,11 @@ ActivityThread通过ApplicationThread和AMS进行进程间通信，AMS以进程�
 
 android3.0开始，网络访问将会失败并抛出NetworkOnMainThreadException这个异常，这样做是为了避免主线程由于被耗时操作所阻塞从而现ANR现象
 
-##11.2 Android中的线程形态
+## 11.2 Android中的线程形态
 
 
 
-###11.2.1 AsyncTask
+### 11.2.1 AsyncTask
 
 AsyncTask是一种轻量级的异步任务类, 他可以在线程池中执行后台任务, 然后把执行的进度和最终的结果传递给主线程并在主线程更新UI. 从实现上来说. AsyncTask封装了Thread和Handler, 通过AsyncTask可以更加方便地执行后台任务,但是AsyncTask并不适合进行特别耗时的后台任务，对于特别耗时的任务来说, 建议使用线程池。
 
@@ -4513,7 +4450,7 @@ AsyncTask在使用过程中有一些条件限制
 
 
 
-###11.2.2 AsyncTask的工作原理
+### 11.2.2 AsyncTask的工作原理
 
 AsyncTask中有两个线程池(SerialExecutor和THREAD_POOL_EXECUTOR)和一个Handler(InternalHandler), 其中线程池SerialExecutor用于任务的排列, 而线程池THREAD_POOL_EXECUTOR用于真正的执行任务, 而InternalHandler用于将执行环境从线程切换到主线程, 其本质仍然是线程的调用过程.
 
@@ -4523,7 +4460,7 @@ AsyncTask的排队过程：首先系统会把AsyncTask#Params参数封装成Futu
 
 
 
-###11.2.3 HandlerThread
+### 11.2.3 HandlerThread
 
 HandlerThread继承了Thread, 它是一种可以使用Handler的Thread, 它的实现也很简单, 就是run方法中通过Looper.prepare()来创建消息队列, 并通过Looper.loop()来开启消息循环, 这样在实际的使用中就允许在HandlerThread中创建Handler.
 
@@ -4549,7 +4486,7 @@ IntentSercie是一种特殊的Service，继承了Service并且是抽象类，任
 
 
 
-##11.3 Android线程池
+## 11.3 Android线程池
 
 优点：
 
@@ -4565,7 +4502,7 @@ Android中的线程池的概念来源于Java中的Executor, Executor是一个接
 
 
 
-###11.3.1 ThreadPoolExecutor
+### 11.3.1 ThreadPoolExecutor
 
 ThreadPoolExecutor是线程池的真正实现, 它的构造方法提供了一系列参数来配置线程池, 这些参数将会直接影响到线程池的功能特性.
 
@@ -4625,7 +4562,7 @@ AsyncTask的THREAD_POOL_EXECUTOR线程池配置:
 
 
 
-###11.3.2 线程池的分类
+### 11.3.2 线程池的分类
 
 **FixedThreadPool**
 
@@ -4667,7 +4604,7 @@ AsyncTask的THREAD_POOL_EXECUTOR线程池配置:
 
 
 
-##12.1 Bitmap的高效加载
+## 12.1 Bitmap的高效加载
 
 先来简单介绍一下如何加载一个Bitmap, Bitmap在android中指的是一张图片, 可以是png格式也可以是jpg等其他常见的图片格式.
 
@@ -4817,7 +4754,7 @@ inJustDecodeBounds这个参数的作用就是在加载图片的时候是否只�
 
 
 
-##12.2 Android中的缓存策略
+## 12.2 Android中的缓存策略
 
 当程序第一次从网络上加载图片后，将其缓存在存储设备中，下次使用这张图片的时候就不用再从网络从获取了。很多时候为了提高应用的用户体验，往往还会把图片在内存中再缓存一份，因为从内存中加载图片比存储设备中快。一般情况会把图片存一份到内存中，一份到存储设备中，如果内存中没找到就去存储设备中找，还没有找到就从网络上下载。
 
@@ -4832,46 +4769,7 @@ inJustDecodeBounds这个参数的作用就是在加载图片的时候是否只�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###12.2.1 LruCache
+### 12.2.1 LruCache
 
 LruCache是Android 3.1所提供的一个缓存类, 通过support-v4兼容包可以兼容到早期的Android版本
 
@@ -4929,7 +4827,7 @@ LruCache 典型初始化过程：
 
 
 
-###12.2.2 DiskLruCache
+### 12.2.2 DiskLruCache
 
 DiskLruCache用于实现磁盘缓存，DiskLruCache得到了Android官方文档推荐，但它不属于Android SDK的一部分，[源码在这里](https://android.googlesource.com/platform/libcore/+/android-4.1.1_r1/luni/src/main/java/libcore/io/DiskLruCache.java)。
 
@@ -5083,7 +4981,7 @@ DiskLruCache并不能通过构造方法来创建, 他提供了open()方法用于
 
 
 
-** DiskLruCache的缓存添加**
+** DiskLruCache的缓存添加 **
 
 DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个缓存对象的编辑对象.
 
@@ -5101,7 +4999,7 @@ DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个
 
 
 
-**DiskLruCache的缓存查找**
+** DiskLruCache的缓存查找 **
 
 和缓存的添加过程类似, 缓存查找过程也需要将url转换成key, 然后通过DiskLruCache#get()方法可以得到一个Snapshot对象, 接着在通过Snapshot对象即可得到缓存的文件输入流, 有了文件输入流, 自然就可以得到Bitmap对象. 为了避免加载图片出现OOM所以采用压缩的方式. 在前面对BitmapFactory.Options的使用说明了. 但是这中方法对FileInputStream的缩放存在问题. 原因是FileInputStream是一种有序的文件流, 而两次decodeStream调用会影响文件的位置属性, 这样在第二次decodeStream的时候得到的会是null. 针对这一个问题, 可以通过文件流来得到它所对应的文件描述符, 然后通过BitmapFactory.decodeFileDescription()来加载一张缩放后的图片.
 
@@ -5165,35 +5063,30 @@ DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个
 
     }
 
-###12.2.3 ImageLoader的实现
+### 12.2.3 ImageLoader的实现
 
 一个好的ImageLoader应该具备以下几点:
 
 
 
 - 图片的压缩
-
 - 网络拉取
-
 - 内存缓存
-
 - 磁盘缓存
-
 - 图片的同步加载
-
 - 图片的异步加载
 
 
 
-**图片压缩功能**
+** 图片压缩功能 **
 
 [ImageResizer](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_12/src/com/ryg/chapter_12/loader/ImageResizer.java)
 
-**内存缓存和磁盘缓存 **
+** 内存缓存和磁盘缓存 **
 
 [ImageLoader](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_12/src/com/ryg/chapter_12/loader/ImageLoader.java) 
 
-**同步加载和异步加载的接口设计**
+** 同步加载和异步加载的接口设计 **
 
 [ImageLoader](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_12/src/com/ryg/chapter_12/loader/ImageLoader.java)  173行
 
@@ -5207,11 +5100,11 @@ DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个
 
 
 
-##12.3 ImageLoader的使用
+## 12.3 ImageLoader的使用
 
 
 
-###12.3.1 照片墙效果
+### 12.3.1 照片墙效果
 
 [实现照片墙效果](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_12/src/com/ryg/chapter_12/MainActivity.java)，如果图片都需要是正方形；这样做很快，自定义一个ImageView，重写onMeasure方法。
 
@@ -5227,7 +5120,7 @@ DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个
 
 
 
-###12.3.2 优化列表的卡顿现象
+### 12.3.2 优化列表的卡顿现象
 
 1. 不要在getView中执行耗时操作，不要在getView中直接加载图片。
 
@@ -5239,7 +5132,7 @@ DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个
 
 [本章内容更多参考](http://www.jianshu.com/p/765640fe474a)
 
-#13 综合技术
+# 13 综合技术
 
 本章主要讲解:
 
@@ -5253,7 +5146,7 @@ DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个
 
 
 
-##13.1 使用CrashHandler来获取应用的crash信息
+## 13.1 使用CrashHandler来获取应用的crash信息
 
 如何检测崩溃并了解详细的crash信息？ 首先需实现一个uncaughtExceptionHandler对象，在它的uncaughtException方法中获取异常信息并将其存储到SD卡或者上传到服务器中，然后调用Thread的setDefaultUncaughtExceptionHandler为当前进程的所有线程设置异常处理器。
 
@@ -5283,7 +5176,7 @@ DiskLruCache的缓存添加的操作是通过Editor完成的, Editor表示一个
 
     }
 
-##13.2 使用multidex来解决方法数越界
+## 13.2 使用multidex来解决方法数越界
 
 Android中单个dex文件所能包含的最大方法数为65536, 这包含了FrameWork, 依赖的jar包以及应用本身的代码中的所有方法. 会爆出:
 
@@ -5390,27 +5283,16 @@ maindexlist.txt
 
 
     com/ryg/multidextest/TestApplication.class
-
     com/ryg/multidextest/MainActivity.class
-
     // multidex 这9个类必须在主Dex中
-
     android/support/multidex/MultiDex.class
-
     android/support/multidex/MultiDexApplication.class
-
     android/support/multidex/MultiDexExtractor.class
-
     android/support/multidex/MultiDexExtractor$1.class
-
     android/support/multidex/MultiDex$V4.class
-
     android/support/multidex/MultiDex$V14.class
-
     android/support/multidex/MultiDex$V19.class
-
     android/support/multidex/ZipUtil.class
-
     android/support/multidex/ZipUtil$CentralDirectory.class
 
 需要注意multidex的jar中的9个类必须要打包到主dex中，因为Application的attachBaseContext方法中需要用到MultiDex.install(this)需要用到MultiDex。
@@ -5425,7 +5307,7 @@ Multidex的缺点：
 
 
 
-##13.3 Android动态加载技术
+## 13.3 Android动态加载技术
 
 动态加载也叫插件化. 当项目越来越大的时候, 可以通过插件化来减轻应用的内存和CPU占用. 还可以实现热插拔, 即可以在不发布新版本的情况下更新某些模块.
 
@@ -5441,7 +5323,7 @@ Multidex的缺点：
 
 
 
-**资源访问**
+** 资源访问 **
 
 插件中凡是以R开头的资源文件都不能访问。
 
@@ -5505,7 +5387,7 @@ Activity的工作主要是通过ContextImpl完成的，Activity中有一个mBase
 
     }
 
-**Activity的生命周期管理**
+** Activity的生命周期管理 **
 
 为什么会有这个问题，其实很好理解，apk被宿主程序调起以后，apk中的activity其实就是一个普通的对象，不具有activity的性质，因为系统启动activity是要做很多初始化工作的，而我们在应用层通过反射去启动activity是很难完成系统所做的初始化工作的，所以activity的大部分特性都无法使用包括activity的生命周期管理，这就需要我们自己去管理。
 
@@ -5515,7 +5397,7 @@ Activity的工作主要是通过ContextImpl完成的，Activity中有一个mBase
 
 
 
-**ClassLoader的管理**
+** ClassLoader的管理 **
 
 为了避免多个ClassLoader加载了同一个类所引发的类型转换错误。将不同插件的ClassLoader存储在一个HashMap中。
 
@@ -5523,7 +5405,7 @@ Activity的工作主要是通过ContextImpl完成的，Activity中有一个mBase
 
 
 
-##13.4 反编译初步
+## 13.4 反编译初步
 
 1. 使用dex2jar和jd-gui反编译apk
 
@@ -5535,7 +5417,7 @@ Activity的工作主要是通过ContextImpl完成的，Activity中有一个mBase
 
 
 
-#14 JNI与NDK编程
+# 14 JNI与NDK编程
 
 Java JNI本意为Java Native Interface(java本地接口), 是为方便java调用C或者C++等本地代码所封装的一层接口. 由于Java的跨平台性导致本地交互能力的不好, 一些和操作系统相关的特性Java无法完成, 于是Java提供了JNI专门用于和本地代码交互.
 
@@ -5553,9 +5435,9 @@ NDK是android所提供的一个工具合集, 通过NDK可以在Android中更加�
 
 
 
-##14.1 JNI的开发流程
+## 14.1 JNI的开发流程
 
-**在Java中声明natvie方法**
+** 在Java中声明natvie方法 **
 
 [创建一个类](https://github.com/singwhatiwanna/android-art-res/blob/master/Chapter_14/JniTest/com/ryg/JniTest.java)
 
@@ -5563,7 +5445,7 @@ NDK是android所提供的一个工具合集, 通过NDK可以在Android中更加�
 
 
 
-**编辑Java源文件得到class文件, 然后通过javah命令导出JNI头文件**
+** 编辑Java源文件得到class文件, 然后通过javah命令导出JNI头文件 **
 
 在包的的根路径, 进行命令操作
 
@@ -5599,7 +5481,7 @@ NDK是android所提供的一个工具合集, 通过NDK可以在Android中更加�
 
 
 
-**用C/C++实现natvie方法**
+** 用C/C++实现natvie方法 **
 
 JNI方法是指的Java中声明的native方法, 这里可以选择c++和c来实现. 过程都是类似的. 只有少量的区别, 这里两种都实现一下.
 
@@ -5669,7 +5551,7 @@ test.c
 
 
 
-** 编译so库并在java中调用**
+** 编译so库并在java中调用 **
 
 so库的编译这里采用gcc. 命令cd到放置刚才生成`c/c++`的目录下.
 
@@ -5689,19 +5571,19 @@ so库的编译这里采用gcc. 命令cd到放置刚才生成`c/c++`的目录下.
 
 
 
-##14.2 NDK的开发流程
+## 14.2 NDK的开发流程
 
-**下载并配置NDK**
+** 下载并配置NDK **
 
 下载好NDK开发包，并且配置好NDK的全局变量。
 
-**创建一个Android项目，并声明所需的native方法**
+** 创建一个Android项目，并声明所需的native方法 **
 
 
 
     public static native String getStringFromC();
 
-**实现Android项目中所声明的native方法**
+** 实现Android项目中所声明的native方法 **
 
 1. 生成C/C++的头文件
 
@@ -5769,7 +5651,7 @@ ii. 使用javah命令生成头文件
 
 
 
-**切换到jni目录的父目录，然后通过ndk-build命令编译产生so库**
+** 切换到jni目录的父目录，然后通过ndk-build命令编译产生so库 **
 
 ndk-build 命令会默认指定jni目录为本地源码的目录
 
@@ -5851,7 +5733,7 @@ ndk-build 命令会默认指定jni目录为本地源码的目录
 
 
 
-**在Android中调用**
+** 在Android中调用 **
 
 
 
@@ -5883,7 +5765,7 @@ ndk-build 命令会默认指定jni目录为本地源码的目录
 
 [更多参考](http://szysky.com/2016/08/26/%E3%80%8AAndroid-%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2%E3%80%8B-14-JNI%E5%92%8CNDK%E7%BC%96%E7%A8%8B/)
 
-##14.3 JNI的数据类型和类型签名
+## 14.3 JNI的数据类型和类型签名
 
 JNI的数据类型包含两种: 基本类型和引用类型.
 
@@ -6133,15 +6015,15 @@ JNI调用Java的过程和Java中方法的定义有很大关联, 针对不同类�
 
 
 
-#15 Android性能优化
+# 15 Android性能优化
 
 Android设备作为一种移动设备，不管是内存还是CPU的性能都受到了一定的限制，也意味着Android程序不可能无限制的使用内存和CPU资源，过多的使用内存容易导致OOM，过多的使用CPU资源容易导致手机变得卡顿甚至无响应（ANR）。这也对开发人员提出了更高的要求。 本章主要介绍一些有效的性能优化方法。主要包括布局优化、绘制优化、内存泄漏优化、响应速度优化、ListView优化、Bitmap优化、线程优化等；同时还介绍了ANR日志的分析方法。
 
 Google官方的Android性能优化典范专题短视频课程是学习Android性能优化极佳的课程，目前已更新到第五季； [youku地址](http://v.youku.com/v_show/id_XMTQ4MDU3Nzc3Mg==.html?f=26771407&from=y1.7-1.3)
 
-##15.1 Android的性能优化方法
+## 15.1 Android的性能优化方法
 
-###15.1.1 布局优化
+### 15.1.1 布局优化
 
 布局优化的思想就是尽量减少布局文件的层级，这样绘制界面时工作量就少了，那么程序的性能自然就高了。
 
@@ -6177,7 +6059,7 @@ ViewStub意义在于按需加载所需的布局文件，因为实际开发中，
 
 
 
-###15.1.2 绘制优化
+### 15.1.2 绘制优化
 
 View的onDraw方法要避免执行大量的操作；
 
@@ -6189,7 +6071,7 @@ View的onDraw方法要避免执行大量的操作；
 
 
 
-###15.1.3 内存泄露优化
+### 15.1.3 内存泄露优化
 
 内存泄露是最容易犯的错误之一，内存泄露优化主要分两个方面；一方面是开发过程中避免写出有内存泄露的代码，另一方面是通过一些分析工具如LeakCanary或MAT来找出潜在的内存泄露继而解决。
 
@@ -6207,7 +6089,7 @@ View的onDraw方法要避免执行大量的操作；
 
 
 
-###15.1.4 响应速度优化和ANR日志分析
+### 15.1.4 响应速度优化和ANR日志分析
 
 响应速度优化的核心思想就是避免在主线程中去做耗时操作，将耗时操作放在其他线程当中去执行。Activity如果5秒无法响应屏幕触摸事件或者键盘输入事件就会触发ANR，而BroadcastReceiver如果10秒还未执行完操作也会出现ANR。
 
@@ -6329,7 +6211,7 @@ tid = 15 就是相关信息如上, 首行已经标出线程的状态为Sleeping,
 
 
 
-###15.1.5 ListView优化和Bitmap优化
+### 15.1.5 ListView优化和Bitmap优化
 
 ListView/GridView优化：
 
@@ -6345,13 +6227,13 @@ Bitmap优化：主要是想是根据需要对图片进行采样显示，详细�
 
 
 
-###15.1.6 线程优化
+### 15.1.6 线程优化
 
 主要思想就是采用线程池, 避免程序中存在大量的Thread. 线程池可以重用内部的线程, 避免了线程创建和销毁的性能开销. 同时线程池还能有效的控制线程的最大并发数, 避免了大量线程因互相抢占系统资源从而导致阻塞现象的发生.详细参考第11章的内容。
 
 
 
-###15.1.7 一些性能优化的小建议
+### 15.1.7 一些性能优化的小建议
 
 1. 避免创建过多的对象，尤其在循环、onDraw这类方法中，谨慎创建对象；
 
@@ -6369,7 +6251,7 @@ Bitmap优化：主要是想是根据需要对图片进行采样显示，详细�
 
 
 
-##15.2 内存泄漏分析工具MAT
+## 15.2 内存泄漏分析工具MAT
 
 MAT全程Eclipse Memory Analyzer, 是一个内存泄漏分析工具. 下载后解压即可. 下载地址http://www.eclipse.org/mat/downloads.php. 这里仅简单说一下. 这个我没有手动去实践, 就当个记录, 因为现在Android Studio可以直接分析hprof文件.
 
@@ -6401,9 +6283,9 @@ MAT全程Eclipse Memory Analyzer, 是一个内存泄漏分析工具. 下载后�
 
 
 
-##15.3 提高程序的可维护性
+## 15.3 提高程序的可维护性
 
-**提高可读性**
+** 提高可读性 **
 
 1. 命名规范
 
@@ -6413,13 +6295,13 @@ MAT全程Eclipse Memory Analyzer, 是一个内存泄漏分析工具. 下载后�
 
 
 
-**代码的层级性**
+** 代码的层级性 **
 
 不要把一段业务逻辑放在一个方法或者一个类中全部实现，要把它分成几个子逻辑，然后每个子逻辑做自己的事情，这样即显得代码层级分明，这样利于提高程序的可扩展性。
 
 
 
-**程序的扩展性**
+** 程序的扩展性 **
 
 由于很多时候在开发过程中无法保证已经做好的需求不在后面的版本发生更改, 因此在写程序的时候要时刻考虑到扩展的问题, 考虑如果这个逻辑以后发生了改变那么哪些需要修改, 以及怎样在以后修改的时候降低工作量, 而面向扩展编程可以让程序具有很好的扩展性.
 
