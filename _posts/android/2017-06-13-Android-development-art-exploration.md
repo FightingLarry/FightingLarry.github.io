@@ -664,7 +664,7 @@ Messenger中有一个 Hanlder 以串行的方式处理队列中的消息。不�
 
 
 
-**AIDL支持的数据类型：**
+** AIDL支持的数据类型： **
 
 1. 基本数据类型、String、CharSequence
 
@@ -896,7 +896,7 @@ top,left表示原始左上角坐标，而x,y表示变化后的左上角坐标。
 
 
 
-**TouchSloup**
+** TouchSloup **
 
 TouchSloup是系统所能识别出的被认为是滑动的最小距离，这是一个常量，与设备有关，可通过以下方法获得：
 
@@ -908,7 +908,7 @@ TouchSloup是系统所能识别出的被认为是滑动的最小距离，这是�
 
 ### 3.1.4 VelocityTracker、GestureDetector和Scroller
 
-**VelocityTracker**
+** VelocityTracker **
 
 速度追踪，用于追踪手指在滑动过程中的速度，包括水平放向速度和竖直方向速度。使用方法：
 
@@ -936,7 +936,7 @@ TouchSloup是系统所能识别出的被认为是滑动的最小距离，这是�
 
 
 
-**GestureDetector**
+** GestureDetector **
 
 手势检测，用于辅助检测用户的单击、滑动、长按、双击等行为。使用方法：
 
@@ -962,7 +962,7 @@ TouchSloup是系统所能识别出的被认为是滑动的最小距离，这是�
 
 
 
-**Scroller**
+** Scroller **
 
 弹性滑动对象，用于实现View的弹性滑动。其本身无法让View弹性滑动，需要和View的computeScroll方法配合使用才能完成这个功能。使用方法：
 
@@ -1368,7 +1368,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 ### 3.5.3 滑动冲突的解决方式
 
-**外部拦截法**
+** 外部拦截法 **
 
 所谓外部拦截法是指点击事件都先经过父容器的拦截处理，如果父容器需要此事件就拦截，否则就不拦截。下面是伪代码：
 
@@ -1434,7 +1434,7 @@ scrollBy实际调用了scrollTo，它实现了基于当前位置的相对滑动�
 
 
 
-**内部拦截法** 
+** 内部拦截法 ** 
 
 内部拦截法是指父容器不拦截任何事件，所有的事件都传递给子元素，如果子元素需要此事件就直接消耗，否则就交由父容器进行处理。这种方法与Android事件分发机制不一致，需要配合requestDisallowInterceptTouchEvent方法才能正常工作。下面是伪代码：
 
@@ -1650,7 +1650,7 @@ parentSize是指父容器中目前可使用的大小。
 
 ### 4.3.1 measure过程
 
-**View的measure过程**
+** View的measure过程 **
 
 
 
@@ -1696,7 +1696,7 @@ parentSize是指父容器中目前可使用的大小。
 
 	}
 
-**ViewGroup的measure过程**
+** ViewGroup的measure过程 **
 
 
 
@@ -1820,25 +1820,25 @@ ViewGroup会默认启用 setWillNotDraw 为ture，导致系统不会去执行 on
 
 ### 4.4.1 自定义View的分类
 
-**继承View 重写onDraw方法**
+** 继承View 重写onDraw方法 **
 
 通过 onDraw 方法来实现一些不规则的效果，这种效果不方便通过布局的组合方式来达到。这种方式需要自己支持 wrap_content ，并且padding也要去进行处理。
 
 
 
-**继承ViewGroup派生特殊的layout**
+** 继承ViewGroup派生特殊的layout **
 
 实现自定义的布局方式，需要合适地处理ViewGroup的测量、布局这两个过程，并同时处理子View的测量和布局过程。
 
 
 
-**继承特定的View子类（ 如TextView、Button）**
+** 继承特定的View子类（ 如TextView、Button） **
 
 扩展某种已有的控件的功能，比较简单，不需要自己去管理 wrap_content 和padding。
 
 
 
-** 继承特定的ViewGroup子类（ 如LinearLayout）**
+** 继承特定的ViewGroup子类（ 如LinearLayout） **
 
 比较常见，实现几种view组合一起的效果。与方法二的差别是方法二更接近底层实现。
 
@@ -2094,7 +2094,7 @@ flags参数的含义
 
 ## 5.2 RemoteViews的内部机制
 
-**构造方法**
+** 构造方法 **
 
 
 
@@ -2121,24 +2121,18 @@ RemoteViews并不支持所有的view类型，支持类型如下：
 |--|--|
 
 |setTextViewText(int viewId,CharSequence text)|设置TextView的文本内容 第一个参数是TextView的id 第二个参数是设置的内容|
-
 |setTextViewTextSize(int viewId,int units,float size)	|设置TextView的字体大小 第二个参数是字体的单位
-
 |setTextColor(int viewId,int color)	|设置TextView字体颜色
-
 |setImageViewResource(int viewId,int srcId)	|设置ImageView的图片
-
 |setInt(int viewId,String methodName,int value)	|反射调用View对象的参数类型为Int的方法 比如上述的setImageViewResource的方法内部就是这个方法实现 因为srcId为int型参数
-
 |setLong setBoolean	|类似于setInt
-
 |setOnClickPendingIntent(int viewId,PendingIntent pendingIntent)|	添加点击事件的方法
 
 大部分set方法是通过反射来完成的。
 
 
 
-**RemoteViews内部机制**
+** RemoteViews内部机制 **
 
 通知栏和小组件分别由NotificationManager(NM)和AppWidgetManager(AWM)管理，而NM和AWM通过Binder分别和SystemService进程中的NotificationManagerService以及AppWidgetService中加载的，而它们运行在系统的SystemService中，这就和我们进程构成了跨进程通讯。
 
@@ -2252,7 +2246,7 @@ Drawable的内部宽、高这个参数比较重要，通过getIntrinsicWidth/get
 
 
 
-**NinePatchDrawable**
+** NinePatchDrawable **
 
 表示一张.9格式的图片，它和BitmapDrawable都表示一张图片。用XML描述的方式也和BitmapDrawable一样。在bitmap标签中也可以使用.9图。
 
@@ -3748,7 +3742,7 @@ TN的handleHide中会将Toast的视图从Window中移除.
 
 
 
-**以上三节的总结**
+** 以上三节的总结 **
 
 1. 在创建视图并显示出来时，首先是通过创建一个Window对象，然后通过WindowManager对象的 addView(View view, ViewGroup.LayoutParams params); 方法将 contentView 添加到Window中，完成添加和显示视图这两个过程。
 
@@ -3780,19 +3774,19 @@ Android的四大组件除了BroadcastReceiver以外，都需要在AndroidManifes
 
 
 
-**Activity**
+** Activity **
 
 是一种展示型组件，用于向用户直接地展示一个界面，并且可以接收用户的输入信息从而进行交互，扮演的是一个前台界面的角色。Activity的启动由intent触发，有隐式和显式两种方式。一个Activity可以有特定的启动模式，finish方法结束Activity运行。
 
 
 
-**Service**
+** Service **
 
 是一种计算型组件，在后台执行一系列计算任务。它本身还是运行在主线程中的，所以耗时的逻辑仍需要单独的线程去完成。Activity只有一种状态：启动状态。而service有两种：启动状态和绑定状态。当service处于绑定状态时，外界可以很方便的和service进行通信，而在启动状态中是不可与外界通信的。Service可以停止, 需要灵活采用stopService和unBindService
 
 
 
-**BroadcastReceiver**
+** BroadcastReceiver **
 
 是一种消息型组件，用于在不同的组件乃至不同的应用之间传递消
 
@@ -3808,7 +3802,7 @@ Android的四大组件除了BroadcastReceiver以外，都需要在AndroidManifes
 
 
 
-**ContentProvider**
+** ContentProvider **
 
 是一种数据共享型组件，用于向其他组件乃至其他应用共享数据。在它内部维持着一份数据集合, 这个数据集合既可以通过数据库来实现, 也可以采用其他任何类型来实现, 例如list或者map. ContentProvider对数据集合的具体实现并没有任何要求.要注意处理好内部的insert, delete, update, query方法的线程同步, 因为这几个方法是在Binder线程池被调用.
 
@@ -4316,15 +4310,11 @@ ActivityThread通过ApplicationThread和AMS进行进程间通信，AMS以进程�
 
 
 
->Looper.loop()，这里是一个死循环，如果主线程的Looper终止，则应用程序会抛出异常。那么问题来了，既然主线程卡在这里了，（1）那Activity为什么还能启动；（2）点击一个按钮仍然可以响应？ 
-
+> Looper.loop()，这里是一个死循环，如果主线程的Looper终止，则应用程序会抛出异常。那么问题来了，既然主线程卡在这里了，（1）那Activity为什么还能启动；（2）点击一个按钮仍然可以响应？ 
 >
-
->问题1：startActivity的时候，会向AMS（ActivityManagerService）发一个跨进程请求（AMS运行在系统进程中），之后AMS启动对应的Activity；AMS也需要调用App中Activity的生命周期方法（不同进程不可直接调用），AMS会发送跨进程请求，然后由App的ActivityThread中的ApplicationThread会来处理，ApplicationThread会通过主线程线程的Handler将执行逻辑切换到主线程。重点来了，主线程的Handler把消息添加到了MessageQueue，Looper.loop会拿到该消息，并在主线程中执行。这就解释了为什么主线程的Looper是个死循环，而Activity还能启动，因为四大组件的生命周期都是以消息的形式通过UI线程的Handler发送，由UI线程的Looper执行的。
-
+> 问题1：startActivity的时候，会向AMS（ActivityManagerService）发一个跨进程请求（AMS运行在系统进程中），之后AMS启动对应的Activity；AMS也需要调用App中Activity的生命周期方法（不同进程不可直接调用），AMS会发送跨进程请求，然后由App的ActivityThread中的ApplicationThread会来处理，ApplicationThread会通过主线程线程的Handler将执行逻辑切换到主线程。重点来了，主线程的Handler把消息添加到了MessageQueue，Looper.loop会拿到该消息，并在主线程中执行。这就解释了为什么主线程的Looper是个死循环，而Activity还能启动，因为四大组件的生命周期都是以消息的形式通过UI线程的Handler发送，由UI线程的Looper执行的。
 >
-
->  问题2：和问题1原理一样，点击一个按钮最终都是由系统发消息来进行的，都经过了Looper.loop()处理。 问题2详细分析请看原书作者的[Android中MotionEvent的来源和ViewRootImpl](http://blog.csdn.net/singwhatiwanna/article/details/50775201)。
+> 问题2：和问题1原理一样，点击一个按钮最终都是由系统发消息来进行的，都经过了Looper.loop()处理。 问题2详细分析请看原书作者的[Android中MotionEvent的来源和ViewRootImpl](http://blog.csdn.net/singwhatiwanna/article/details/50775201)。
 
 
 
@@ -4448,7 +4438,7 @@ HandlerThread继承了Thread, 它是一种可以使用Handler的Thread, 它的�
 
 
 
-###11.2.4 IntentService
+### 11.2.4 IntentService
 
 IntentSercie是一种特殊的Service，继承了Service并且是抽象类，任务执行完成后会自动停止，优先级远高于普通线程，适合执行一些高优先级的后台任务； IntentService封装了HandlerThread和Handler
 
@@ -4499,15 +4489,10 @@ ThreadPoolExecutor是线程池的真正实现, 它的构造方法提供了一系
 	}
 
 - corePoolSize: 线程池的核心线程数, 默认情况下, 核心线程会在线程池中一直存活, 即使都处于闲置状态. 如果将ThreadPoolExecutor#allowCoreThreadTimeOut属性设置为true, 那么闲置的核心线程在等待新任务到来时会有超时的策略, 这个时间间隔由keepAliveTime属性来决定. 当等待时间超过了keepAliveTime设定的值那么核心线程将会终止.
-
 - maximumPoolSize: 线程池所能容纳的最大线程数, 当活动线程数达到这个数值之后, 后续的任务将会被阻塞.
-
 - keepAliveTime: 非核心线程闲置的超时时长, 超过这个时长, 非核心线程就会被回收. allowCoreThreadTimeOut这个属性为true的时候, 这个属性同样会作用于核心线程.
-
 - unit: 用于指定keepAliveTime参数的时间单位, 这是一个枚举, 常用的有TimeUtil.MILLISECONDS(毫秒), TimeUtil.SECONDS(秒)以及TimeUtil.MINUTES(分)
-
 - workQueue: 线程池中的任务队列, 通过线程池的execute方法提交的Runnable对象会存储在这个参数中.
-
 - threadFactory: 线程工厂, 为线程池提供创建新线程的功能. ThreadFactory是一个接口.
 
 
@@ -4538,13 +4523,13 @@ AsyncTask的THREAD_POOL_EXECUTOR线程池配置:
 
 ### 11.3.2 线程池的分类
 
-**FixedThreadPool**
+** FixedThreadPool **
 
 通过Executor#newFixedThreadPool()方法来创建. 它是一种线程数量固定的线程池, 当线程处于空闲状态时, 它们并不会被回收, 除非线程池关闭了. 当所有的线程都处于活动状态时, 新任务都会处于等待状态, 直到有线程空闲出来. 由于FixedThreadPool只有核心线程并且这些核心线程不会被回收, 这意味着它能够更加快速地响应外界的请求.
 
 
 
-** CachedThreadPool**
+** CachedThreadPool **
 
 通过Executor#newCachedThreadPool()方法来创建. 它是一种线程数量不定的线程池, 它只有非核心线程, 并且其最大值线程数为Integer.MAX_VALUE. 这就可以认为这个最大线程数为任意大了. 当线程池中的线程都处于活动的时候, 线程池会创建新的线程来处理新任务, 否则就会利用空闲的线程来处理新任务. 线程池中的空闲线程都有超时机制, 这个超时时长为60S, 超过这个时间那么空闲线程就会被回收.
 
@@ -4554,19 +4539,19 @@ AsyncTask的THREAD_POOL_EXECUTOR线程池配置:
 
 
 
-**ScheduledThreadPool**
+** ScheduledThreadPool **
 
 通过Executor#newScheduledThreadPool()方法来创建. 它的核心线程数量是固定的, 而非核心线程数是没有限制的, 并且当非核心线程闲置时会立刻被回收掉. 这类线程池用于执行定时任务和具有固定周期的重复任务
 
 
 
-**SingleThreadExecutor**
+** SingleThreadExecutor **
 
 通过Executor#newSingleThreadPool()方法来创建. 这类线程池内部只有一个核心线程, 它确保所有的任务都在同一个线程中按顺序执行. 这类线程池意义在于统一所有的外界任务到一个线程中, 这使得在这些任务之间不需要处理线程同步的问题
 
 
 
-#12 Bitmap的加载和Cache
+# 12 Bitmap的加载和Cache
 
 主要介绍：
 
@@ -4807,7 +4792,7 @@ DiskLruCache用于实现磁盘缓存，DiskLruCache得到了Android官方文档�
 
 
 
-** DiskLruCache的创建**
+** DiskLruCache的创建 **
 
 DiskLruCache并不能通过构造方法来创建, 他提供了open()方法用于创建自身, 如下所示
 
@@ -5175,7 +5160,6 @@ Android中单个dex文件所能包含的最大方法数为65536, 这包含了Fra
 解决方案
 
 - 插件化: 是一套重量级的技术方案, 通过将一个dex拆分成两个或者多个dex,可以在一定程度上解决方法数的越界问题. 但是还有兼容性问题需要考虑, 所以需要权衡是否需要使用这个方案.
-
 - multidex: 这是Google在2014年提出的解决方案.在Android5.0之前需要引入Google提供的android-support-multidex.jar；从5.0开始系统默认支持了multidex，它可以从apk文件中加载多个dex文件。
 
 
@@ -5199,20 +5183,12 @@ true这个配置项。
 	3. 第三种方案，重写 attachBaseContext 方法，这个方法比onCreate还要先执行。
 
             public class BaseApplication extends Application {
-
                 @Override
-
                 protected void attachBaseContext(Context base) {
-
                     super.attachBaseContext(base);
-
                     MultiDex.install(this);
-
                 }
-
             }
-
-
 
 采用上面的配置项后，如果这个应用方法数没有越界，那么Gradle是不会生成多个dex文件的，当方法数越界后，Gradle就会在apk中打包2个或多个dex文件。当需要指定主dex文件中所包含的类，这时候就需要通过--multi-dex-list来选项来实现这个功能。
 
@@ -5221,35 +5197,20 @@ true这个配置项。
     //在对应工程目录下的build.gradle文件，加入
 
     afterEvaluate {
-
     println "afterEvaluate"
-
     tasks.matching {
-
     it.name.startsWith('dex')
-
     }.each { dx ->
-
     def listFile = project.rootDir.absolutePath + '/app/maindexlist.txt'
-
     println "root dir:" + project.rootDir.absolutePath
-
     println "dex task found: " + dx.name
-
     if (dx.additionalParameters == null) {
-
        dx.additionalParameters = []
-
     }
-
     dx.additionalParameters += '--multi-dex'
-
     dx.additionalParameters += '--main-dex-list=' + listFile
-
     dx.additionalParameters += '--minimal-main-dex'
-
     }
-
     } 
 
 maindexlist.txt
@@ -5574,56 +5535,33 @@ ii. 使用javah命令生成头文件
 
 
         # Copyright (C) 2009 The Android Open Source Project
-
         # #
-
         Licensed under the Apache License, Version 2.0 (the "License");
-
         # you may not use this file except in compliance with the License.
-
         # You may obtain a copy of the License at
-
         # #
-
         http://www.apache.org/licenses/LICENSE-2.0
-
         # #
-
         Unless required by applicable law or agreed to in writing, software
-
         # distributed under the License is distributed on an "AS IS" BASIS,
-
         # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-
         # See the License for the specific language governing permissions and
-
         # limitations under the License.
-
         # L
 
         OCAL_PATH := $(call my-dir)
-
         include $(CLEAR_VARS)
 
-
-
         ## 对应Java部分 System.loadLibrary(String libName) 的libname
-
         LOCAL_MODULE := hello
 
-
-
         ## 对应c/c++的实现文件名
-
         LOCAL_SRC_FILES := hello.c
-
         include $(BUILD_SHARED_LIBRARY)
 
 3. 编写Application.mk，来指定需生成的平台对应的动态库，这里是全平台支持，也可以特殊指定。目前常见的架构平台有armeabi、x86和mips。其中移动设备主要是armeabi，因此大部分apk中只包含armeabi的so库。
 
 		 APP_ABI := all
-
-
 
 ** 切换到jni目录的父目录，然后通过ndk-build命令编译产生so库 **
 
@@ -5636,15 +5574,10 @@ ndk-build 命令会默认指定jni目录为本地源码的目录
 
 
     android{
-
         ……
-
         sourceSets.main{
-
         	jniLibs.srcDir 'src/main/jni_libs'
-
         }
-
     }
 
 还可以通过 defaultConfig 区域添加NDK选项
@@ -5652,23 +5585,15 @@ ndk-build 命令会默认指定jni目录为本地源码的目录
 
 
     android{
-
         ……
-
         defaultConfig{
-
             ……
-
             ndk{
-
                 moduleName "jni-test"
-
             }
-
         }
-
     }
-
+	
 还可以在 productFlavors 设置动态打包不同平台CPU对应的so库进apk（ 缩小APK体积）
 
 
@@ -5676,34 +5601,21 @@ ndk-build 命令会默认指定jni目录为本地源码的目录
     gradle
 
     android{
-
         ……
-
         productFlavors{
-
             arm{
-
                 ndk{
-
                     adiFilter "armeabi"
-
                 }
-
             } 
-
             x86{
-
                 ndk{
-
                     adiFilter "x86"
-
                 }
-
             }
-
         }
 
-    } `
+    }
 
 
 
@@ -5750,121 +5662,74 @@ JNI的数据类型包含两种: 基本类型和引用类型.
 
 
 |JNI类型	|Java类型	|描述
-
 |--|--|--|--
-
 |jboolean|	boolean	|无符号8位整型
-
 |jbyte	|byte	|无符号8位整型
-
 |jchar|	char	|无符号16位整型
-
 |jshort	|short	|有符号16位整型
-
 |jint	|int	|32位整型
-
 |jlong	|long	|64位整型
-
 |jfloat	|float	|32位浮点型
-
 |jdouble	|double	|64位浮点型
-
 |void	|void|	无类型
-
 
 
 JNI中的引用类型主要有类, 对象和数组. 他们和Java中的引用类型的对应关系如下:
 
 
-
 |JNI类型	|Java类型|	描述|
-
 |--|--|--|
-
 |jobject|	Object|	Object类型
-
 |jclass	|Class	|Class类型
-
 |jstring	|String	|String类型
-
 |jobjeckArray|	Object[]	|对象数组
-
 |jbooleanArray	|boolean[]	|boolean数组
-
 |jbyteArray	|byte[]	|byte数组
-
 |jcharArray	|char[]	|char数组
-
 |jshortArray	|short[]	|short数组
-
 |jintArray	|int[]	|int数组
-
 |jlongArray	|long[]	|long数组
-
 |jfloatArray|	float[]	|float数组
-
 |jdoubleArray	|double[]	|double数组
-
 |jthrowable	|Throwable	|Throwable
-
 
 
 JNI的类型签名标识了一个特定的Java类型, 这个类型既可以是类也可以是方法, 也可以是数据类型.
 
 
-
 类的签名比较简单, 它采用L+包名+类型+;的形式, 只需要将其中的.替换为/即可. 例如java.lang.String, 它的签名为Ljava/lang/String;, 末尾的;也是一部分.
-
 
 
 基本数据类型的签名采用一系列大写字母来表示, 如下:
 
 
-
 |Java类型|	签名|	Java类型|	签名|	Java类型|	签名|
-
 |--|--|--|--|--|--|
-
 |boolean	|Z|	byte	|B	|char	|C
-
 |short	|S	|int	|I	|long	|J
-
 |float|	F|	double	|D	|void	|V
 
 基本数据类型的签名基本都是单词的首字母, 但是boolean除外因为B已经被byte占用, 而long的表示也被Java类签名占用. 所以不同.
 
 
-
 而对象和数组, 对象的签名就是对象所属的类签名, 数组的签名[+类型签名例如byte数组. 首先类型为byte,所以签名为B然后因为是数组那么最终形成的签名就是[B.例如如下各种对应:
 
-
-
     char[]      [C
-
     float[]     [F
-
     double[]    [D
-
     long[]      [J
-
     String[]    [Ljava/lang/String;
-
     Object[]    [Ljava/lang/Object;
 
 如果是多维数组那么就根据数组的维度多少来决定[的多少, 例如int[][]那么就是[[I
 
 
-
 方法的签名为(参数类型签名)+返回值类型签名。
 
 - 方法boolean fun(int a, double b, int[] c). 参数类型的签名是连在一起, 那么按照方法的签名规则就是(ID[I)Z
-
 - 方法:void fun(int a, String s, int[] c), 那么签名就是(ILjava/lang/String;[I)V
-
 - 方法:int fun(), 对应签名()I
-
 - 方法:int fun(float f), 对应签名(F)I
-
 
 
 ## 14.4 JNI调用Java方法的流程
@@ -5878,103 +5743,57 @@ JNI调用java方法的流程是先通过类名找到类, 然后在根据方法�
 1. 首先在java中声明要被调用的静态方法. 这里触发的时机是一个按钮的点击,自行添加
 
         static{
-
                 System.loadLibrary("jni-test");
-
             }
-
         /**
-
          * 定义一个静态方法 , 提供给JNI调用
-
          */
-
         public static void methodCalledByJni(String fromJni){
-
             Log.e("susu", "我是从JNI被调用的消息,  JNI返回的值是:"+fromJni );
-
         }
-
         // 定义调用本地方法, 好让本地方法回调java中的方法
-
         public native void callJNIConvertJavaMethod();
-
         @Override
-
         public void onClick(View view) {
-
             switch (view.getId()){
-
                 case R.id.btn_jni2java:
-
                     // 调用JNI的方法
-
                     callJNIConvertJavaMethod();
-
                     break;
-
             }
-
         }
 
 2. 在JNI的test.cpp中添加一个c的函数用来处理调用java的逻辑, 并提供一个方法供java代码调起来触发. 一共两个方法。
 
         // 定义调用java中的方法的函数
-
         void callJavaMethod( JNIEnv *env, jobject thiz){
-
             // 先找到要调用的类
-
             jclass clazz = env -> FindClass("com/szysky/note/androiddevseek_14/MainActivity");
-
             if (clazz == NULL){
-
                 printf("找不到要调用方法的所属类");
-
                 return;
-
             }
-
             // 获取java方法id
-
             // 参数二是调用的方法名,  参数三是方法的签名
-
             jmethodID id = env -> GetStaticMethodID(clazz, "methodCalledByJni", "(Ljava/lang/String;)V");
-
             if (id == NULL){
-
                 printf("找不到要调用方法");
-
                 return;
-
             }
-
             jstring msg = env->NewStringUTF("我是在c中生成的字符串");
-
             // 开始调用java中的静态方法
-
             env -> CallStaticVoidMethod(clazz, id, msg);
-
         }
-
         void Java_com_szysky_note_androiddevseek_114_MainActivity_callJNIConvertJavaMethod(JNIEnv *env, jobject thiz){
-
             printf("调用c代码成功, 马上回调java中的代码");
-
             callJavaMethod(env, thiz);
-
         }
 
 稍微说明一下, 程序首先根据类名com/szysky/note/androiddevseek_14/MainActivity找到类, 然后在根据方法名methodCalledByJni找到方法, 并传入方法对应签名(Ljava/lang/String;), 最后通过JNIEnv对象的CallStaticVoidMethod()方法来完成最终调用。
 
-
-
 最后只要在Java_com_szysky_note_androiddevseek_114_MainActivity_callJNIConvertJavaMethod方法中调用callJavaMethod方法即可.
 
-
-
 流程就是–> 按钮触发了点击的onClikc –> 然后Java中会调用JNI的callJNIConvertJavaMethod() –> JNI的callJNIConvertJavaMethod()方法内部会调用具体实现回调Java中的方法callJavaMethod() –> 方法最终通过CallStaticVoidMethod()调用了Java中的methodCalledByJni()来接收一个参数并打印一个log。
-
 
 
 结果图:
@@ -5984,9 +5803,7 @@ JNI调用java方法的流程是先通过类名找到类, 然后在根据方法�
 生成so库的文件保存在git中的app/src/main/backup目录下一个两个版本代码, 第一个就是第二小节中的NDK开发代码, 第二个就是第四小节的代码就是目前的. 而so库是最新的, 包含了所有的JNI代码生成的库文件。
 
 
-
 JNI调用Java的过程和Java中方法的定义有很大关联, 针对不同类型的java方法, JNIEnv提供了不同的接口去调用, 更为细节的部分要去开发中或者去网站去了解更多.
-
 
 
 # 15 Android性能优化
@@ -6003,29 +5820,23 @@ Google官方的Android性能优化典范专题短视频课程是学习Android性
 
 
 - 删除无用的控件和层级
-
 - 有选择的使用性能较低的ViewGroup，如果布局中既可以使用Linearlayout也可以使用RelativeLayout，那就是用LinearLayout，因为RelativeLayout功能比较复杂，它的布局过程需要花费更多的CPU时间。
-
 有时候通过LinearLayou无法实现产品效果，需要通过嵌套来完成，这种情况还是推荐使用RelativeLayout，因为ViewGroup的嵌套相当于增加了布局的层级，同样降低程序性能。
-
 - 采用标签、标签和ViewStub
-
- - include标签
-
+  - include标签
+ 
 	<include>标签用于布局重用，可以将一个指定的布局文件加载到当前布局文件中。<include>只支持android:layout开头的属性，当然android:id这个属性是个特例；如果指定了android:layout这种属性，那么要求android:layoutwidth和android:layout_height必须存在，否则android:layout属性无法生效。如果<include>指定了id属性，同时被包含的布局文件的根元素也指定了id属性，会以<include>指定的这个id属性为准。
-
- - merge标签
+  
+  - merge标签
 
 	<merge>标签一般和<include>标签一起使用从而减少布局的层级。如果当前布局是一个竖直方向的LinearLayout，这个时候被包含的布局文件也采用竖直的LinearLayout，那么显然被包含的布局文件中的这个LinearLayout是多余的，通过<merge>标签就可以去掉多余的那一层LinearLayout。
 
- - ViewStub
+  - ViewStub
 
 	ViewStub意义在于按需加载所需的布局文件，因为实际开发中，有很多布局文件在正常情况下是不会现实的，比如网络异常的界面，这个时候就没必要在整个界面初始化的时候将其加载进来，在需要使用的时候再加载会更好。在需要加载ViewStub布局时：
 
-			 ((ViewStub)findViewById(R.id.stub_import)).setVisibility(View.VISIBLE);
-
+			((ViewStub)findViewById(R.id.stub_import)).setVisibility(View.VISIBLE);
             //或者
-
             View importPanel = ((ViewStub)findViewById(R.id.stub_import)).inflate();
 
 当ViewStub通过setVisibility或者inflate方法加载后，ViewStub就会被它内部的布局替换掉，ViewStub也就不再是整个布局结构的一部分了。
@@ -6035,7 +5846,6 @@ Google官方的Android性能优化典范专题短视频课程是学习Android性
 View的onDraw方法要避免执行大量的操作；
 
 - onDraw中不要创建大量的局部对象，因为onDraw方法会被频繁调用，这样就会在一瞬间产生大量的临时对象，不仅会占用过多内存还会导致系统频繁GC，降低程序执行效率。
-
 - onDraw也不要做耗时的任务，也不能执行成千上万的循环操作，尽管每次循环都很轻量级，但大量循环依然十分抢占CPU的时间片，这会造成View的绘制过程不流畅。根据Google官方给出的标准，View绘制保持在60fps是最佳的，这也就要求每帧的绘制时间不超过16ms(1000/60)；所以要尽量降低onDraw方法的复杂度。
 
 
@@ -6061,123 +5871,69 @@ View的onDraw方法要避免执行大量的操作；
 
 响应速度优化的核心思想就是避免在主线程中去做耗时操作，将耗时操作放在其他线程当中去执行。Activity如果5秒无法响应屏幕触摸事件或者键盘输入事件就会触发ANR，而BroadcastReceiver如果10秒还未执行完操作也会出现ANR。
 
-
-
 当一个进程发生ANR以后系统会在/data/anr的目录下创建一个文件traces.txt，通过分析该文件就能定位出ANR的原因。
-
-
 
 通过一个例子来了解如何去分析文件, 首先在onCreate()添加如下代码, 让主线程等待一个锁,然后点击返回5秒后会出现ANR。
 
 
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
-
        super.onCreate(savedInstanceState);
-
        setContentView(R.layout.activity_main);
-
        // 以下代码是为了模拟一个ANR的场景来分析日志
-
        new Thread(new Runnable() {
-
            @Override
-
            public void run() {
-
                testANR();
-
            }
-
        }).start();
-
        SystemClock.sleep(10);
-
        initView();
-
     }
-
     /**
-
     *  以下两个方法用来模拟出一个稍微不好发现的ANR
-
     */
-
     private synchronized void testANR(){
-
        SystemClock.sleep(3000 * 1000);
-
     }
-
     private synchronized void initView(){}
-
 
 
 这样会出现ANR, 然后导出/data/anr/straces.txt文件. 因为内容比较多只贴出关键部分
 
-
-
     DALVIK THREADS (15):
 
     "main" prio=5 tid=1 Blocked
-
       | group="main" sCount=1 dsCount=0 obj=0x73db0970 self=0xf4306800
-
       | sysTid=19949 nice=0 cgrp=apps sched=0/0 handle=0xf778d160
-
       | state=S schedstat=( 151056979 25055334 199 ) utm=5 stm=9 core=1 HZ=100
-
       | stack=0xff5b2000-0xff5b4000 stackSize=8MB
-
       | held mutexes=
-
       at com.szysky.note.androiddevseek_15.MainActivity.initView(MainActivity.java:0)
-
       - waiting to lock <0x2fbcb3de> (a com.szysky.note.androiddevseek_15.MainActivity) 
-
       - held by thread 15
-
       at com.szysky.note.androiddevseek_15.MainActivity.onCreate(MainActivity.java:42)
-
 
 这段可以看出最后指明了ANR发生的位置在ManiActivity的42行. 并且通过上面看出initView方法正在等待一个锁<0x2fbcb3de>锁的类型是一个MainActivity对象. 并且这个锁已经被线程id为15(tid=15)的线程持有了. 接下来找一下线程15
 
-
-
     "Thread-404" prio=5 tid=15 Sleeping
-
       | group="main" sCount=1 dsCount=0 obj=0x12c00f80 self=0xeb95bc00
-
       | sysTid=19985 nice=0 cgrp=apps sched=0/0 handle=0xef34be80
-
       | state=S schedstat=( 391248 0 1 ) utm=0 stm=0 core=2 HZ=100
-
       | stack=0xe2bfe000-0xe2c00000 stackSize=1036KB
-
       | held mutexes=
-
       at java.lang.Thread.sleep!(Native method)
-
       - sleeping on <0x2e3896a7> (a java.lang.Object)
-
       at java.lang.Thread.sleep(Thread.java:1031)
-
       - locked <0x2e3896a7> (a java.lang.Object)
-
       at java.lang.Thread.sleep(Thread.java:985)
-
       at android.os.SystemClock.sleep(SystemClock.java:120)
-
       at com.szysky.note.androiddevseek_15.MainActivity.testANR(MainActivity.java:50)
-
       - locked <0x2fbcb3de> (a com.szysky.note.androiddevseek_15.MainActivity)
 
 
 tid = 15 就是相关信息如上, 首行已经标出线程的状态为Sleeping, 原因在50行, 就是SystemClock.sleep(3000 * 1000);这句话. 也就是testANR(). 而最后一行也表明了持有的locked<0x2fbcb3de>就是主线程在等待的那个锁对象.
-
-
 
 ### 15.1.5 ListView优化和Bitmap优化
 
