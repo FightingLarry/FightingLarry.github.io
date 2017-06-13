@@ -6,10 +6,6 @@ tags: [Android,View]
 ---
 
 
-
-# 《Android开发艺术探索》笔记
-
-
 本书是一本Android进阶类书籍，采用理论、源码和实践相结合的方式来阐述高水准的Android应用开发要点。本书从三个方面来组织内容。
 
 1. 介绍Android开发者不容易掌握的一些知识点
@@ -19,35 +15,13 @@ tags: [Android,View]
 3. 介绍一些核心技术和Android的性能优化思想
 
 
-
-# 目录
-
-第1章 Activity的生命周期和启动模式
-第2章 IPC机制
-第3章 View的事件体系
-第4章 View的工作原理
-第5章 理解RemoteViews
-第6章 Android的Drawable
-第7章 Android动画深入分析
-第8章 理解Window和WindowManager
-第9章 四大组件的工作过程
-第10章 Android的消息机制
-第11章 Android的线程和线程池
-第12章 Bitmap的加载和Cache
-第13章 综合技术
-第14章 JNI和NDK编程
-第15章 Android性能优化
-
-[TOC]
-
-
-
+[toc]
 
 
 # 1 Activity的生命周期和启动模式
 
 
-##1.1 Activity的生命周期全面分析
+## 1.1 Activity的生命周期全面分析
 
 用户正常使用情况下的生命周期 & 由于Activity被系统回收或者设备配置改变导致Activity被销毁重建情况下的生命周期。
 
