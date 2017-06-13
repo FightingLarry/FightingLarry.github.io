@@ -5,6 +5,7 @@ title:  "《Android开发艺术探索》笔记"
 tags: [Android,View]
 ---
 
+[TOC]
 
 本书是一本Android进阶类书籍，采用理论、源码和实践相结合的方式来阐述高水准的Android应用开发要点。本书从三个方面来组织内容。
 
@@ -13,9 +14,6 @@ tags: [Android,View]
 2. 结合Android源代码和应用层开发过程，融会贯通，介绍一些比较深入的知识点
 
 3. 介绍一些核心技术和Android的性能优化思想
-
-
-[toc]
 
 
 # 1 Activity的生命周期和启动模式
