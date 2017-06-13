@@ -6002,7 +6002,6 @@ Google官方的Android性能优化典范专题短视频课程是学习Android性
 布局优化的思想就是尽量减少布局文件的层级，这样绘制界面时工作量就少了，那么程序的性能自然就高了。
 
 
-
 - 删除无用的控件和层级
 
 - 有选择的使用性能较低的ViewGroup，如果布局中既可以使用Linearlayout也可以使用RelativeLayout，那就是用LinearLayout，因为RelativeLayout功能比较复杂，它的布局过程需要花费更多的CPU时间。
@@ -6011,17 +6010,17 @@ Google官方的Android性能优化典范专题短视频课程是学习Android性
 
 - 采用标签、标签和ViewStub
 
-	- include标签
+ - include标签
 
-<include>标签用于布局重用，可以将一个指定的布局文件加载到当前布局文件中。<include>只支持android:layout开头的属性，当然android:id这个属性是个特例；如果指定了android:layout这种属性，那么要求android:layoutwidth和android:layout_height必须存在，否则android:layout属性无法生效。如果<include>指定了id属性，同时被包含的布局文件的根元素也指定了id属性，会以<include>指定的这个id属性为准。
+	<include>标签用于布局重用，可以将一个指定的布局文件加载到当前布局文件中。<include>只支持android:layout开头的属性，当然android:id这个属性是个特例；如果指定了android:layout这种属性，那么要求android:layoutwidth和android:layout_height必须存在，否则android:layout属性无法生效。如果<include>指定了id属性，同时被包含的布局文件的根元素也指定了id属性，会以<include>指定的这个id属性为准。
 
-	- merge标签
+ - merge标签
 
-<merge>标签一般和<include>标签一起使用从而减少布局的层级。如果当前布局是一个竖直方向的LinearLayout，这个时候被包含的布局文件也采用竖直的LinearLayout，那么显然被包含的布局文件中的这个LinearLayout是多余的，通过<merge>标签就可以去掉多余的那一层LinearLayout。
+	<merge>标签一般和<include>标签一起使用从而减少布局的层级。如果当前布局是一个竖直方向的LinearLayout，这个时候被包含的布局文件也采用竖直的LinearLayout，那么显然被包含的布局文件中的这个LinearLayout是多余的，通过<merge>标签就可以去掉多余的那一层LinearLayout。
 
-	- ViewStub
+ - ViewStub
 
-ViewStub意义在于按需加载所需的布局文件，因为实际开发中，有很多布局文件在正常情况下是不会现实的，比如网络异常的界面，这个时候就没必要在整个界面初始化的时候将其加载进来，在需要使用的时候再加载会更好。在需要加载ViewStub布局时：
+	ViewStub意义在于按需加载所需的布局文件，因为实际开发中，有很多布局文件在正常情况下是不会现实的，比如网络异常的界面，这个时候就没必要在整个界面初始化的时候将其加载进来，在需要使用的时候再加载会更好。在需要加载ViewStub布局时：
 
 			 ((ViewStub)findViewById(R.id.stub_import)).setVisibility(View.VISIBLE);
 
@@ -6031,18 +6030,13 @@ ViewStub意义在于按需加载所需的布局文件，因为实际开发中，
 
 当ViewStub通过setVisibility或者inflate方法加载后，ViewStub就会被它内部的布局替换掉，ViewStub也就不再是整个布局结构的一部分了。
 
-
-
 ### 15.1.2 绘制优化
 
 View的onDraw方法要避免执行大量的操作；
 
-
-
 - onDraw中不要创建大量的局部对象，因为onDraw方法会被频繁调用，这样就会在一瞬间产生大量的临时对象，不仅会占用过多内存还会导致系统频繁GC，降低程序执行效率。
 
 - onDraw也不要做耗时的任务，也不能执行成千上万的循环操作，尽管每次循环都很轻量级，但大量循环依然十分抢占CPU的时间片，这会造成View的绘制过程不流畅。根据Google官方给出的标准，View绘制保持在60fps是最佳的，这也就要求每帧的绘制时间不超过16ms(1000/60)；所以要尽量降低onDraw方法的复杂度。
-
 
 
 ### 15.1.3 内存泄露优化
