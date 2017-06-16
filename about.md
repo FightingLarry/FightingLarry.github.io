@@ -3,8 +3,15 @@ layout: post
 title: "Larry-个人简历"
 ---
 # Larry
-Phone：xxx											Email：511573633@qq.com
-Github：[FightingLarry](https://github.com/FightingLarry)								Blog：[www.iamlarry.com]( http://www.iamlarry.com "I am Larry 主页")
+
+Phone：xxx
+
+Email：511573633@qq.com
+
+Github：[FightingLarry](https://github.com/FightingLarry)
+
+Blog：[www.iamlarry.com]( http://www.iamlarry.com "I am Larry 主页")
+
 ## 求职意向
 
 职业：`Android应用开发，能带团队`						地点：`深圳`
@@ -23,16 +30,22 @@ Github：[FightingLarry](https://github.com/FightingLarry)								Blog：[www.ia
 ## 个人经历
 
 - **2015/05 - 至今 | T* | Android资深**
+  
   带领团队开发《Launcher》《主题》《数据运营》项目，《Launcher》项目在多款手机预装，《数据运营》项目为公司取得了关键数据。
 
 - **2013/06 - 2015/05 | 龙* | Android高级**
+  
   负责《啪啪》《乌鸦》项目的开发，《啪啪》项目有千万用户，《乌鸦》百万用户。
 
 - **2011/02 - 2013/06 | 软* | Android软件开发**
+  
   负责《NFC翼卡通》《日历》《酒店节能控制系统》项目，前两个项目已发布，参与了《手机阅读器》《智能汽车导航》的开发。
 
 - **2007/09 -- 2011/07| 天津* | 本科**
-  专业：计算机科学与技术							语言：日语二级
+  
+  专业：计算机科学与技术
+  
+  语言：日语二级
 
 
 ## 项目经验
