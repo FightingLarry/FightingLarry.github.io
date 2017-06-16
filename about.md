@@ -21,7 +21,7 @@ title: "Larry-个人简历"
 - Github开源项目Launcher3，是通过Google Launcher3开发个性化桌面的源码，用于极客学院讲解《Google Launcher3 源码分析》系列课程，已上架。连接为：[D_H_Android](http://my.jikexueyuan.com/0yqagaXgV/record/)
 - Github开源项目Larry-android，快速开发Android项目框架
 - 熟悉Android应用开发，包括系统应用，在有系统权限下的应用开发
-- 熟悉Android应用的性能优化，cpu、ppu、内存、电量的优化
+- 熟悉Android应用的性能优化，cpu、gpu、内存、电量的优化
 - 熟悉shell、jenkins、gradle自动化打包、git等辅助应用
 - 能用NDK开发，开发过音频解压缩，speex和opus
 
