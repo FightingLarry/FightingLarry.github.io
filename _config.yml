@@ -19,7 +19,7 @@ side_bar_repo_limit: 5
 author: Larry
 organization: iamlarry.com
 organization_url: http://www.iamlarry.com
-github_username: FrightingLarry
+github_username: FightingLarry
 location: Shenzhen, China
 email: 511573633@qq.com
 
@@ -89,15 +89,15 @@ comments_provider: gitment
 # !!!Important!!! Please modify infos below to yours
 # https://disqus.com
 disqus:
-    username: iamlarry
+    username: iamlarryDisqus
 # https://imsun.net/posts/gitment-introduction/
 
-#gitment:
-#    owner: mzlogin
-#    repo: blog-comments
-#    oauth:
-#        client_id: d2e1cbbd298958076462
-#        client_secret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
+gitment:
+    owner: iamlarry
+    repo: blog-comments
+    oauth:
+        client_id: de2aca8354f060a784e8
+        client_secret: d74ebf402d994ac997a871b43461b2717fac8939
         
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : true
