@@ -4,7 +4,7 @@
 baseurl:
 url: http://www.iamlarry.com
 date_format: "ordinal"
-title: Larry
+title: 努力的Larry
 subtitle: "读书使人进步"
 description: "Larry的个人博客"
 keywords: Larry, IamLarry
@@ -100,7 +100,7 @@ gitment:
         client_secret: d74ebf402d994ac997a871b43461b2717fac8939
         
 # 在使用其它评论组件时可点击显示 Disqus
-lazy_load_disqus : true
+lazy_load_disqus : false
 
 # ---------------- #
 #    Analytics     #
