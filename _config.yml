@@ -1,12 +1,12 @@
 # Site settings
-title: 努力的Larry
-email: 511573633@qq.com
+title: 闫肃的博客
+email: suyan0830@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  努力的Larry
+  闫肃的博客
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: http://www.ftlarry.com # the base hostname & protocol for your site
+url: http://yansu.org # the base hostname & protocol for your site
 rss_url: /pages/feed.xml
-author: Fighting Larry
+author: Su Yan
 
 # Sidebar filter
 # Choose 'tag' or 'category' as filter in sidebar.
@@ -14,20 +14,24 @@ filter: 'category'
 recent_num: 20
 
 # Social account
-github: FightingLarry
+twitter: suyan404
+weibo: suyan0830
+github: suyan
+instagram: suyan404
+linkedin: suyan404
 
 # avatar and Favicon
-avatar: /favicon.png
-favicon: /favicon.ico
+avatar: http://imgs.yansu.org/site-avatar.png
+favicon: http://imgs.yansu.org/site-favicon.ico
 
 # disqus config
-# https://imsun.net/posts/gitment-introduction/
 # disqus:
-#  shortname: iamlarryDisqus
+#  shortname: suyan-zh
 
 # google analytics config
 # ga:
-#  id: UA-100236772-1
+#  id: UA-54767140-1
+#  url: yansu.org
 
 # Build settings
 permalink: /:year/:month/:day/:title.html
@@ -37,34 +41,10 @@ mathjax: disabled
 sass:
   style: compressed
 
+# Jekyll Plugin
+# https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
 
-
-
-# ---------------- #
-#      Comments    #
-# ---------------- #
-# support provider: disqus, gitment
-##comments_provider: gitment
-
-# !!!重要!!! 请修改下面这些信息为你自己申请的
-# !!!Important!!! Please modify infos below to yours
-# https://disqus.com
-#disqus:
-#    username: iamlarryDisqus
-# https://imsun.net/posts/gitment-introduction/
-
-#gitment:
-#    owner: iamlarry
-#    repo: blog-comments
-#    oauth:
-#        client_id: de2aca8354f060a784e8
-#        client_secret: d74ebf402d994ac997a871b43461b2717fac8939
-        
-# 在使用其它评论组件时可点击显示 Disqus
-#lazy_load_disqus : false
-
-# ---------------- #
-#    Analytics     #
-# ---------------- #
-#google:
-#    analytics_id: UA-100236772-1
