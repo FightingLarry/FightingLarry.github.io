@@ -13,7 +13,7 @@ permalink: /about/
 - Android应用开发
 - Email：511573633@qq.com
 - Github：[FightingLarry](https://github.com/FightingLarry)
-- Blog：[www.iamlarry.com]( http://www.iamlarry.com "I am Larry 主页")
+- Blog：[www.ftlarry.com]( http://www.ftlarry.com "I am Larry 主页")
 
 ## 联系
 

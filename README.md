@@ -1,5 +1,2 @@
-### 我的博客
+# [My blog](https://www.ftlarry.com)
 
-地址：[http://www.iamlarry.com](http://www.iamlarry.com)
-
-Hello world！
