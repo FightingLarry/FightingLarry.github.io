@@ -1,8 +1,10 @@
 ---
-title: Why Blog
+title: Android 知识体系
 layout: post
 ---
 
-## 关于我
+# [Android 知识体系](https://docs.qq.com/mind/DZFJEcmNieVBXelNp)
 
-码农，专注于Android app、音视频开发，偶尔写写Unity小游戏。
+需要掌握的知识点如下图，持续更新
+
+![Android 知识体系图谱](https://www.ftlarry.com/assets/post_img/Android知识体系.png)
