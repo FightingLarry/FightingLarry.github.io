@@ -3,7 +3,7 @@ title: Android 知识体系
 layout: post
 ---
 
-# [Android 知识体系](https://docs.qq.com/mind/DZFJEcmNieVBXelNp)
+# Android 知识体系,[传送到腾讯文档](https://docs.qq.com/mind/DZFJEcmNieVBXelNp)。
 
 需要掌握的知识点如下图，持续更新
 
