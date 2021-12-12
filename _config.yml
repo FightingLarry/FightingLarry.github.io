@@ -21,12 +21,12 @@ avatar: /favicon.png
 favicon: /favicon.ico
 
 # disqus config
- disqus:
-  shortname: iamlarryDisqus
+# disqus:
+#  shortname: iamlarryDisqus
 
 # google analytics config
- ga:
-  id: UA-100236772-1
+# ga:
+#  id: UA-100236772-1
 #  url: yansu.org
 
 # Build settings
